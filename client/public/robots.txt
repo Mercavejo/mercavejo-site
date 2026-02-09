@@ -1,4 +1,11 @@
+# Robots.txt - Mercavejo
 User-agent: *
 Allow: /
 
-Sitemap: https://mercavejo-site.vercel.app/sitemap.xml
+# Sitemap
+Sitemap: https://mercavejo.com.br/sitemap.xml
+
+# Bloquear diretórios desnecessários
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/

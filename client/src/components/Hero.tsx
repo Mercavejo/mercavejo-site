@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden bg-white">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-       <div className="absolute inset-0 bg-[url('/images/hero-ai-clean.jpg')] bg-cover bg-center opacity-150" />
+        <div className="absolute inset-0 bg-[url('/images/hero-ai-clean.jpg')] bg-cover bg-center opacity-100" />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/60" />
       </div>
       <div className="relative z-10 h-full flex items-center">

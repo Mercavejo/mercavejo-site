@@ -3,11 +3,13 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Clients from '@/components/Clients';
 import Portfolio from '@/components/Portfolio';
+import Testimonials from '@/components/Testimonials';
 import Studio from '@/components/Studio';
 import Packages from '@/components/Packages';
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function Home() {
   return (
@@ -26,12 +28,13 @@ export default function Home() {
           <Services />
         </div>
 
-        {/* 3 - azul (novo azul #20447D) */}
-        <div className="bg-[#20447D] text-white">
-          <Portfolio />
-        </div>
+        {/* 3 - Portfolio */}
+        <Portfolio />
 
-        {/* 4 - azul (novo azul #20447D) */}
+        {/* 4 - Depoimentos (quebra visual) */}
+        <Testimonials />
+
+        {/* 5 - azul (novo azul #20447D) */}
         <div className="bg-[#20447D] text-white">
           <Studio />
         </div>
@@ -50,6 +53,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
