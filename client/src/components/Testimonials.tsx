@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
+const defaultPersonImage = '/images/default-person.svg';
+
 const testimonials = [
     {
         id: 1,
@@ -8,7 +10,7 @@ const testimonials = [
         role: 'Médico - Clínica Oftalmológica',
         content: 'A Mercavejo transformou completamente a presença digital da minha clínica. Em 3 meses triplicamos o número de agendamentos online.',
         rating: 5,
-        image: '/images/luciana.webp',
+        image: defaultPersonImage,
     },
     {
         id: 2,
@@ -16,7 +18,7 @@ const testimonials = [
         role: 'Proprietária - Sublime Estética',
         content: 'Profissionais excepcionais! O trabalho de gestão de redes sociais aumentou nosso engajamento em 400%. Recomendo muito!',
         rating: 5,
-        image: '/images/luciana.webp',
+        image: defaultPersonImage,
     },
     {
         id: 3,
@@ -24,7 +26,7 @@ const testimonials = [
         role: 'Diretor - Rio Fibra Telecom',
         content: 'As campanhas de tráfego pago geraram um ROI incrível. A equipe é extremamente competente e atenciosa.',
         rating: 5,
-        image: '/images/luciana.webp',
+        image: defaultPersonImage,
     },
 ];
 

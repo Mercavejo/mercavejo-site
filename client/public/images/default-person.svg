@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Avatar padrao</title>
+  <desc id="desc">Imagem padrao de perfil de pessoa sem foto.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dbe4f0" />
+      <stop offset="100%" stop-color="#c7d4e5" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="120" fill="url(#bg)" />
+  <circle cx="120" cy="90" r="44" fill="#8aa0bb" />
+  <path d="M44 210c8-42 38-66 76-66s68 24 76 66" fill="#8aa0bb" />
+</svg>
