@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Clients from '@/components/Clients';
 import Portfolio from '@/components/Portfolio';
-import Testimonials from '@/components/Testimonials';
 import Studio from '@/components/Studio';
 import Packages from '@/components/Packages';
 import Contact from '@/components/Contact';
@@ -31,8 +30,7 @@ export default function Home() {
         {/* 3 - Portfolio */}
         <Portfolio />
 
-        {/* 4 - Depoimentos (quebra visual) */}
-        <Testimonials />
+        {/* 4 - Depoimentos oculto temporariamente */}
 
         {/* 5 - azul (novo azul #20447D) */}
         <div className="bg-[#20447D] text-white">
