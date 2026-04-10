@@ -4,7 +4,7 @@ import Services from '@/components/Services';
 import Clients from '@/components/Clients';
 import Portfolio from '@/components/Portfolio';
 import Studio from '@/components/Studio';
-import Packages from '@/components/Packages';
+
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -37,10 +37,7 @@ export default function Home() {
           <Studio />
         </div>
 
-        {/* 5 - azul (novo azul #20447D) */}
-        <div className="bg-[#20447D] text-white">
-          <Packages />
-        </div>
+
 
         {/* 6 - FAQ */}
         <FAQ />
