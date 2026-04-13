@@ -22,7 +22,7 @@ export default function Clients() {
           Empresas que confiam na Mercavejo
         </p>
       </div>
-      
+
       <div className="relative flex overflow-hidden">
         <motion.div
           className="flex whitespace-nowrap"
@@ -54,7 +54,7 @@ export default function Clients() {
             </div>
           ))}
         </motion.div>
-        
+
         {/* Gradientes nas bordas para suavizar a entrada/saída */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0a192f] to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0a192f] to-transparent z-10" />
