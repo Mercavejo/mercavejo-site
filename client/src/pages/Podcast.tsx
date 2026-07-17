@@ -44,6 +44,7 @@ const cutsExamples = [
 ];
 
 export default function Podcast() {
+  const whatsappPhone = '5517996240418';
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const [isMuted1, setIsMuted1] = useState(true);
@@ -85,6 +86,11 @@ export default function Podcast() {
       videoRef.current.muted = true;
       setMuted(true);
     }
+  };
+
+  const getPodcastBudgetHref = (packageName: string) => {
+    const message = encodeURIComponent(`Olá! Vim pela página de podcast da Mercavejo e gostaria de solicitar um orçamento para o pacote ${packageName}.`);
+    return `https://wa.me/${whatsappPhone}?text=${message}`;
   };
 
   return (
@@ -254,8 +260,13 @@ export default function Podcast() {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full py-6 font-bold ${pkg.featured ? 'bg-[#d4b67b] text-[#0F3A7D] hover:bg-[#bfa46e]' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                    Solicitar Orçamento
+                  <Button
+                    asChild
+                    className={`w-full py-6 font-bold ${pkg.featured ? 'bg-[#d4b67b] text-[#0F3A7D] hover:bg-[#bfa46e]' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                  >
+                    <a href={getPodcastBudgetHref(pkg.name)} target="_blank" rel="noopener noreferrer">
+                      Solicitar Orçamento
+                    </a>
                   </Button>
                 </div>
               ))}

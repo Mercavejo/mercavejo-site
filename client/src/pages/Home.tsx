@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Clients from '@/components/Clients';
 import Portfolio from '@/components/Portfolio';
+import WebsiteProjects from '@/components/WebsiteProjects';
 import Studio from '@/components/Studio';
 
 import Contact from '@/components/Contact';
@@ -29,6 +30,8 @@ export default function Home() {
 
         {/* 3 - Portfolio */}
         <Portfolio />
+
+        <WebsiteProjects />
 
         {/* 4 - Depoimentos oculto temporariamente */}
 
