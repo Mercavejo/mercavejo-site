@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transições — lâminas da peça dourada (60°), glitch, flash</title>
+  </head>
+  <body>
+    <template id="transicoes-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        /* Lâmina: retângulo alto girado 30° → bordas a 60°, como a peça dourada do logo.
+           Centro horizontal (cx) = left + metade da largura. Cobre a tela inteira para cx ∈ [−98, 1178]. */
+        .tr-lamina {
+          position: absolute;
+          top: -1040px;
+          left: 0;
+          width: 3000px;
+          height: 4000px;
+          opacity: 0;
+        }
+        .tr-fio {
+          position: absolute;
+          top: -1040px;
+          left: 0;
+          width: 70px;
+          height: 4000px;
+          background: #ffffff;
+          opacity: 0;
+        }
+        #tr-a-ouro {
+          background: #d4b67b;
+        }
+        #tr-b-azul {
+          background: #0f3a7d;
+        }
+        #tr-b-ouro {
+          background: #d4b67b;
+        }
+        #tr-b-navy {
+          background: #012c47;
+        }
+        .tr-faixa {
+          position: absolute;
+          left: -60px;
+          width: 1200px;
+          opacity: 0;
+        }
+        #tr-flash {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+        }
+        #tr-anel {
+          position: absolute;
+          left: 90px;
+          top: 510px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          border: 22px solid #d4b67b;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="transicoes" data-width="1080" data-height="1920">
+        <div class="tr-lamina" id="tr-a-ouro"></div>
+        <div class="tr-fio" id="tr-a-fio"></div>
+        <div class="tr-lamina" id="tr-b-navy"></div>
+        <div class="tr-lamina" id="tr-b-azul"></div>
+        <div class="tr-lamina" id="tr-b-ouro"></div>
+        <div class="tr-fio" id="tr-b-fio"></div>
+        <div id="tr-glitch"></div>
+        <div id="tr-anel"></div>
+        <div id="tr-flash"></div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const CUT = [1.875, 4.6875, 8.4375, 10.3125, 12.1875];
+          const tl = gsap.timeline({ paused: true });
+          const HALF = 1500; // metade da largura da lâmina
+          const cx = function (c) {
+            return c - HALF; // valor de x para centralizar a lâmina em c
+          };
+
+          // Todas as lâminas giradas 30° (bordas a 60°).
+          tl.set(".tr-lamina, .tr-fio", { rotation: 30, transformOrigin: "50% 50%" }, 0);
+
+          // T0 — 1,875: flash curto sobre o mergulho dourado.
+          tl.fromTo("#tr-flash", { opacity: 0.55 }, { opacity: 0, duration: 0.14, ease: "power2.out", immediateRender: false }, CUT[0]);
+
+          // T1 — 4,6875: lâmina dourada E→D, slam-wipe (entra freando, sai acelerando).
+          (function () {
+            const c = CUT[1];
+            tl.set("#tr-a-ouro", { opacity: 1, x: cx(-2600) }, c - 0.18);
+            tl.to("#tr-a-ouro", { x: cx(400), duration: 0.18, ease: "power3.out" }, c - 0.18);
+            tl.to("#tr-a-ouro", { x: cx(3700), duration: 0.16, ease: "power2.in" }, c);
+            tl.set("#tr-a-ouro", { opacity: 0 }, c + 0.17);
+            // fio branco acompanha a borda dianteira da lâmina (borda = cx + 1732)
+            const fio = function (bandCx) {
+              return bandCx + 1732 + 50 - 35;
+            };
+            tl.set("#tr-a-fio", { opacity: 0.9, x: fio(-2600) }, c - 0.18);
+            tl.to("#tr-a-fio", { x: fio(400), duration: 0.18, ease: "power3.out" }, c - 0.18);
+            tl.set("#tr-a-fio", { opacity: 0 }, c);
+          })();
+
+          // T2 — 8,4375: três lâminas escalonadas D→E (navy, azul, dourado — a dourada fecha o corte).
+          (function () {
+            const c = CUT[2];
+            [["#tr-b-navy", 0.07], ["#tr-b-azul", 0.035], ["#tr-b-ouro", 0]].forEach(function (p) {
+              const sel = p[0];
+              const lag = p[1];
+              tl.set(sel, { opacity: 1, x: cx(3800) }, c - 0.18 - lag);
+              tl.to(sel, { x: cx(700), duration: 0.18, ease: "power3.out" }, c - 0.18 - lag);
+              tl.to(sel, { x: cx(-2700), duration: 0.15, ease: "power2.in" }, c - lag);
+              tl.set(sel, { opacity: 0 }, c + 0.16 - lag);
+            });
+            const fio = function (bandCx) {
+              return bandCx - 1732 - 50 - 35;
+            };
+            tl.set("#tr-b-fio", { opacity: 0.85, x: fio(3800) }, c - 0.18);
+            tl.to("#tr-b-fio", { x: fio(700), duration: 0.18, ease: "power3.out" }, c - 0.18);
+            tl.set("#tr-b-fio", { opacity: 0 }, c + 0.02);
+          })();
+
+          // T3 — 10,3125: glitch RGB (chromatic-aberration-wipe / chromatic-glitch), faixas determinísticas.
+          (function () {
+            const c = CUT[3];
+            const host = document.getElementById("tr-glitch");
+            const CORES = ["#d4b67b", "#0f3a7d", "#ffffff", "#d4b67b", "#20447d", "#c9a36a", "#012c47", "#d4b67b", "#ffffff", "#0f3a7d", "#d4b67b", "#20447d"];
+            const N = 12;
+            for (let i = 0; i < N; i++) {
+              const f = document.createElement("div");
+              f.className = "tr-faixa";
+              f.id = "tr-f" + i;
+              const h = 60 + ((i * 97) % 170);
+              const top = (i * 173) % 1800;
+              f.style.top = top + "px";
+              f.style.height = h + "px";
+              f.style.background = CORES[i];
+              host.appendChild(f);
+            }
+            for (let i = 0; i < N; i++) {
+              const sel = "#tr-f" + i;
+              const off = function (k) {
+                // pseudo-aleatório determinístico (hash por seno), faixa ±560 px
+                const v = Math.sin((i + 1) * 12.9898 + (k + 1) * 78.233) * 43758.5453;
+                return ((v - Math.floor(v)) * 2 - 1) * 560;
+              };
+              tl.set(sel, { opacity: 0.85, x: off(0) }, c - 0.1);
+              tl.set(sel, { x: off(1) }, c - 0.067);
+              tl.set(sel, { x: off(2), opacity: 1 }, c - 0.033);
+              tl.set(sel, { x: off(3) }, c);
+              tl.set(sel, { x: off(4), opacity: 0.6 }, c + 0.033);
+              tl.set(sel, { opacity: 0 }, c + 0.067 + (i % 3) * 0.017);
+            }
+            tl.fromTo("#tr-flash", { opacity: 0.7 }, { opacity: 0, duration: 0.12, ease: "power2.out", immediateRender: false }, c);
+          })();
+
+          // T4 — 12,1875: flash branco total + anel de choque dourado (drop final).
+          (function () {
+            const c = CUT[4];
+            tl.fromTo("#tr-flash", { opacity: 1 }, { opacity: 0, duration: 0.38, ease: "expo.out", immediateRender: false }, c);
+            tl.fromTo("#tr-anel", { opacity: 1, scale: 0.15 }, { opacity: 0, scale: 2.4, duration: 0.7, ease: "expo.out", immediateRender: false }, c + 0.02);
+          })();
+
+          window.__timelines["transicoes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

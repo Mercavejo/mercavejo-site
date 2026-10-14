@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="120 660 840 600" width="840" height="600">
+  <!-- Símbolo Mercavejo redesenhado em vetor a partir de client/public/images/logo.png (mesmas coordenadas). -->
+  <g stroke-linejoin="round" stroke-width="17">
+    <path id="peca-m" fill="#ffffff" stroke="#ffffff" d="M221 680 L374 680 L540 940 L560 910 L731 910 L540 1238 L381 980 L309 1101 L142 1101 L292 826 Z"/>
+    <path id="peca-ouro" fill="#d4b67b" stroke="#d4b67b" d="M694 680 L860 680 L779 829 L609 829 Z"/>
+    <path id="peca-tri" fill="#ffffff" stroke="#ffffff" d="M854 955 L938 1101 L771 1101 Z"/>
+  </g>
+</svg>

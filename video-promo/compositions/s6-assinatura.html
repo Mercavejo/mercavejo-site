@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>S6 — Assinatura + CTA</title>
+  </head>
+  <body>
+    <template id="s6-assinatura-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 800;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-800-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 600;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #012c47;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #s6-glow {
+          position: absolute;
+          left: -310px;
+          top: 0px;
+          width: 1700px;
+          height: 1700px;
+          background: radial-gradient(
+            circle at 50% 45%,
+            rgba(212, 182, 123, 0.28) 0%,
+            rgba(15, 58, 125, 0.4) 35%,
+            rgba(1, 44, 71, 0) 68%
+          );
+        }
+        #s6-ghost {
+          position: absolute;
+          left: 0;
+          top: 1600px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 280px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+          color: rgba(255, 255, 255, 0.06);
+        }
+        #s6-logo {
+          position: absolute;
+          left: 270px;
+          top: 330px;
+          width: 540px;
+          height: 386px;
+          overflow: visible;
+        }
+        #s6-wordmark {
+          position: absolute;
+          left: 0;
+          top: 770px;
+          width: 1080px;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 132px;
+          line-height: 1;
+          letter-spacing: 0.01em;
+          white-space: nowrap;
+        }
+        #s6-tag {
+          position: absolute;
+          left: 0;
+          top: 935px;
+          width: 1080px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 26px;
+        }
+        .s6-regua {
+          display: block;
+          width: 110px;
+          height: 4px;
+          background: #d4b67b;
+        }
+        #s6-tag-texto {
+          display: block;
+          font-weight: 700;
+          font-size: 38px;
+          letter-spacing: 0.28em;
+          color: #d4b67b;
+          white-space: nowrap;
+        }
+        #s6-cta {
+          position: absolute;
+          left: 0;
+          top: 1080px;
+          width: 1080px;
+          display: flex;
+          justify-content: center;
+        }
+        #s6-cta-pill {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 30px 56px;
+          border-radius: 22px;
+          background: #d4b67b;
+          color: #012c47;
+          font-weight: 700;
+          font-size: 46px;
+          white-space: nowrap;
+          box-shadow: 0 24px 60px rgba(212, 182, 123, 0.28);
+        }
+        #s6-seta {
+          display: block;
+          width: 40px;
+          height: 32px;
+          background: #012c47;
+          clip-path: polygon(0 12px, 24px 12px, 24px 0, 40px 16px, 24px 32px, 24px 20px, 0 20px);
+        }
+        #s6-url-box {
+          position: absolute;
+          left: 60px;
+          top: 1265px;
+          width: 960px;
+          height: 150px;
+          overflow: hidden;
+        }
+        #s6-url {
+          position: absolute;
+          left: 0;
+          top: 14px;
+          width: 960px;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          font-weight: 800;
+          font-size: 104px;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          white-space: nowrap;
+        }
+        /* Brilho especular — adaptado do catálogo shimmer-sweep: em vez de overlay (que clareia o
+           fundo), uma janela estreita percorre o URL revelando uma cópia em dourado-claro. */
+        #s6-brilho-janela {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 70px;
+          height: 150px;
+          overflow: hidden;
+        }
+        #s6-brilho {
+          position: absolute;
+          left: 0;
+          top: 14px;
+          width: 960px;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          font-weight: 800;
+          font-size: 104px;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          color: #f3e3bd;
+          white-space: nowrap;
+        }
+        #s6-url-borda {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 14px;
+          height: 150px;
+          background: #d4b67b;
+          opacity: 0;
+        }
+        #s6-url-linha {
+          position: absolute;
+          left: 240px;
+          top: 1420px;
+          width: 600px;
+          height: 6px;
+          background: #d4b67b;
+        }
+        #s6-rodape {
+          position: absolute;
+          left: 0;
+          top: 1465px;
+          width: 1080px;
+          text-align: center;
+          font-weight: 600;
+          font-size: 36px;
+          letter-spacing: 0.04em;
+          color: rgba(255, 255, 255, 0.82);
+          white-space: nowrap;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s6-assinatura" data-width="1080" data-height="1920">
+        <div id="s6-glow"></div>
+        <div id="s6-ghost" aria-hidden="true" data-layout-ignore>MERCAVEJO MERCAVEJO</div>
+
+        <svg id="s6-logo" viewBox="120 660 840 600" xmlns="http://www.w3.org/2000/svg" aria-label="Símbolo Mercavejo">
+          <g stroke-linejoin="round" stroke-width="17">
+            <path
+              id="s6-peca-m"
+              fill="#ffffff"
+              stroke="#ffffff"
+              d="M221 680 L374 680 L540 940 L560 910 L731 910 L540 1238 L381 980 L309 1101 L142 1101 L292 826 Z"
+            />
+            <path id="s6-peca-ouro" fill="#d4b67b" stroke="#d4b67b" d="M694 680 L860 680 L779 829 L609 829 Z" />
+            <path id="s6-peca-tri" fill="#ffffff" stroke="#ffffff" d="M854 955 L938 1101 L771 1101 Z" />
+          </g>
+        </svg>
+
+        <div id="s6-wordmark">MERCAVEJO</div>
+        <div id="s6-tag">
+          <span class="s6-regua" id="s6-regua-e"></span>
+          <span id="s6-tag-texto">MARKETING &amp; ESTÚDIO</span>
+          <span class="s6-regua" id="s6-regua-d"></span>
+        </div>
+
+        <div id="s6-cta">
+          <div id="s6-cta-pill">Solicite um Orçamento <span id="s6-seta"></span></div>
+        </div>
+
+        <div id="s6-url-box">
+          <div id="s6-url">mercavejo.com.br</div>
+          <div id="s6-brilho-janela" aria-hidden="true" data-layout-ignore><div id="s6-brilho">mercavejo.com.br</div></div>
+          <div id="s6-url-borda"></div>
+        </div>
+        <div id="s6-url-linha"></div>
+        <div id="s6-rodape">Catanduva · SP  —  @mercavejo_consultoria</div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 2.8125;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s6-glow", { scale: 0.85, opacity: 0.6 }, { scale: 1.08, opacity: 1, duration: D, ease: "sine.out" }, 0);
+          tl.fromTo("#s6-ghost", { x: 0 }, { x: -600, duration: D, ease: "none" }, 0);
+
+          // Peças convergem para o centro no drop (logo-assemble-lockup, parts-arrive).
+          tl.fromTo("#s6-peca-m", { x: -700, rotation: -30, opacity: 0, transformOrigin: "50% 50%" }, { x: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0);
+          tl.fromTo("#s6-peca-ouro", { x: 520, y: -900, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.04);
+          tl.fromTo("#s6-peca-tri", { x: 500, y: 600, rotation: 90, opacity: 0, transformOrigin: "50% 60%" }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.08);
+          tl.fromTo("#s6-logo", { scale: 1.25 }, { scale: 1, duration: 0.6, ease: "power3.out", transformOrigin: "50% 50%" }, 0);
+
+          // Wordmark + descritor.
+          tl.fromTo("#s6-wordmark", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "power4.out" }, 0.16);
+          tl.fromTo("#s6-regua-e", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
+          tl.fromTo("#s6-regua-d", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
+          tl.fromTo("#s6-tag-texto", { opacity: 0, scaleX: 1.3 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.3);
+
+          // URL: wipe da esquerda p/ direita com borda dourada (legível a partir de ~0,55 s local = 12,74 global).
+          tl.fromTo("#s6-url", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.36, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#s6-url-borda", { x: 0, opacity: 1 }, { x: 946, opacity: 1, duration: 0.36, ease: "power3.inOut", immediateRender: false }, 0.2);
+          tl.to("#s6-url-borda", { opacity: 0, duration: 0.12 }, 0.56);
+          tl.fromTo("#s6-url-linha", { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.48);
+
+          // CTA (texto real do site) entra com mola no beat.
+          tl.fromTo("#s6-cta-pill", { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2.2)" }, B);
+          tl.fromTo("#s6-rodape", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2 * B);
+          tl.fromTo("#s6-seta", { x: 0 }, { x: 10, duration: B / 2, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 2 * B);
+
+          // Brilho no URL (2 passadas).
+          // janela anda de -90 a 980 px; o texto interno anda o oposto e fica alinhado ao URL.
+          [0.75, 1.95].forEach(function (t0) {
+            tl.fromTo("#s6-brilho-janela", { x: -90 }, { x: 980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
+            tl.fromTo("#s6-brilho", { x: 90 }, { x: -980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
+          });
+
+          // Stab final em b30 (local 1,875): pulso na peça dourada e no botão.
+          tl.fromTo("#s6-peca-ouro", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.12, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
+          tl.fromTo("#s6-cta-pill", { scale: 1 }, { scale: 1.05, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
+
+          window.__timelines["s6-assinatura"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Mercavejo — Promo 15s (9:16)</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Poppins";
+        font-weight: 900;
+        font-style: normal;
+        src: url("assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Inter";
+        font-weight: 700;
+        font-style: normal;
+        src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #012c47;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #012c47;
+        font-family: "Inter", sans-serif;
+      }
+      /* Slots das sub-composições ocupam o quadro inteiro. */
+      [data-composition-id="main"] > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+      #el-transicoes {
+        z-index: 50;
+        pointer-events: none;
+      }
+      #el-acabamento {
+        z-index: 90;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-fps="60"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Cenas: uma sub-composição por cena, cortes nos beats (128 BPM). -->
+      <div
+        id="el-s1"
+        data-composition-id="s1-gancho"
+        data-composition-src="compositions/s1-gancho.html"
+        data-start="0"
+        data-duration="1.875"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-s2"
+        data-composition-id="s2-manifesto"
+        data-composition-src="compositions/s2-manifesto.html"
+        data-start="1.875"
+        data-duration="2.8125"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-s3"
+        data-composition-id="s3-servicos"
+        data-composition-src="compositions/s3-servicos.html"
+        data-start="4.6875"
+        data-duration="3.75"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-s4"
+        data-composition-id="s4-estudio"
+        data-composition-src="compositions/s4-estudio.html"
+        data-start="8.4375"
+        data-duration="1.875"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-s5"
+        data-composition-id="s5-portfolio"
+        data-composition-src="compositions/s5-portfolio.html"
+        data-start="10.3125"
+        data-duration="1.875"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-s6"
+        data-composition-id="s6-assinatura"
+        data-composition-src="compositions/s6-assinatura.html"
+        data-start="12.1875"
+        data-duration="2.8125"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Camada de transições (lâminas a 60° da peça dourada), acima das cenas. -->
+      <div
+        id="el-transicoes"
+        data-composition-id="transicoes"
+        data-composition-src="compositions/transicoes.html"
+        data-start="0"
+        data-duration="15"
+        data-track-index="2"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Acabamento global: vinheta radial + grão de filme (catálogo grain-overlay). -->
+      <div
+        id="el-acabamento"
+        data-composition-id="acabamento"
+        data-composition-src="compositions/acabamento.html"
+        data-start="0"
+        data-duration="15"
+        data-track-index="3"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Trilha original (scripts/make_music.py), −14 LUFS. -->
+      <audio
+        id="el-trilha"
+        data-timeline-role="music"
+        src="assets/audio/mercavejo-trilha.wav"
+        data-start="0"
+        data-duration="15"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

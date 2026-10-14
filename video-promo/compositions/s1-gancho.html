@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>S1 — Gancho: o logo se monta no beat</title>
+  </head>
+  <body>
+    <template id="s1-gancho-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #012c47;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #s1-bg-glow {
+          position: absolute;
+          left: -260px;
+          top: 160px;
+          width: 1600px;
+          height: 1400px;
+          background: radial-gradient(
+            circle at 50% 45%,
+            rgba(212, 182, 123, 0.3) 0%,
+            rgba(15, 58, 125, 0.32) 34%,
+            rgba(1, 44, 71, 0) 68%
+          );
+        }
+        .s1-ring {
+          position: absolute;
+          left: 540px;
+          top: 800px;
+          width: 900px;
+          height: 900px;
+          margin-left: -450px;
+          margin-top: -450px;
+          border-radius: 50%;
+          border: 3px solid rgba(212, 182, 123, 0.55);
+        }
+        #s1-ghost {
+          position: absolute;
+          left: 0;
+          top: 1480px;
+          width: 3000px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 300px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          color: rgba(255, 255, 255, 0.07);
+          white-space: nowrap;
+        }
+        #s1-stage {
+          position: absolute;
+          inset: 0;
+        }
+        #s1-logo {
+          position: absolute;
+          left: 180px;
+          top: 543px;
+          width: 720px;
+          height: 514px;
+          overflow: visible;
+        }
+        #s1-wordmark {
+          position: absolute;
+          left: 0;
+          top: 1150px;
+          width: 1080px;
+          display: flex;
+          justify-content: center;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 136px;
+          line-height: 1;
+          letter-spacing: 0.01em;
+          color: #ffffff;
+        }
+        .s1-letra {
+          display: inline-block;
+        }
+        #s1-tag {
+          position: absolute;
+          left: 0;
+          top: 1330px;
+          width: 1080px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 28px;
+        }
+        .s1-regua {
+          display: block;
+          width: 120px;
+          height: 4px;
+          background: #d4b67b;
+        }
+        #s1-tag-texto {
+          display: block;
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 40px;
+          letter-spacing: 0.28em;
+          color: #d4b67b;
+          white-space: nowrap;
+        }
+        #s1-flash {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+        }
+        /* Mergulho: a peça dourada cresce até ocupar a tela (vira o fundo da cena 2). */
+        #s1-dive {
+          position: absolute;
+          inset: 0;
+          background: #d4b67b;
+          clip-path: polygon(672px 560px, 814px 560px, 745px 687px, 599px 687px);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s1-gancho" data-width="1080" data-height="1920">
+        <div id="s1-bg-glow"></div>
+        <div class="s1-ring" id="s1-ring-1"></div>
+        <div class="s1-ring" id="s1-ring-2"></div>
+        <div class="s1-ring" id="s1-ring-3"></div>
+        <div id="s1-ghost" aria-hidden="true" data-layout-ignore>MERCAVEJO MERCAVEJO</div>
+
+        <div id="s1-stage">
+          <svg
+            id="s1-logo"
+            viewBox="120 660 840 600"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Símbolo Mercavejo"
+          >
+            <defs>
+              <filter id="s1-streak" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur id="s1-streak-blur" in="SourceGraphic" stdDeviation="0 0" />
+              </filter>
+            </defs>
+            <g stroke-linejoin="round" stroke-width="17">
+              <path
+                id="s1-peca-m"
+                fill="#ffffff"
+                stroke="#ffffff"
+                d="M221 680 L374 680 L540 940 L560 910 L731 910 L540 1238 L381 980 L309 1101 L142 1101 L292 826 Z"
+              />
+              <g filter="url(#s1-streak)">
+                <path
+                  id="s1-peca-ouro"
+                  fill="#d4b67b"
+                  stroke="#d4b67b"
+                  d="M694 680 L860 680 L779 829 L609 829 Z"
+                />
+              </g>
+              <path
+                id="s1-peca-tri"
+                fill="#ffffff"
+                stroke="#ffffff"
+                d="M854 955 L938 1101 L771 1101 Z"
+              />
+            </g>
+          </svg>
+
+          <div id="s1-wordmark" aria-label="MERCAVEJO">
+            <span class="s1-letra">M</span><span class="s1-letra">E</span
+            ><span class="s1-letra">R</span><span class="s1-letra">C</span
+            ><span class="s1-letra">A</span><span class="s1-letra">V</span
+            ><span class="s1-letra">E</span><span class="s1-letra">J</span
+            ><span class="s1-letra">O</span>
+          </div>
+          <div id="s1-tag">
+            <span class="s1-regua" id="s1-regua-e"></span>
+            <span id="s1-tag-texto">MARKETING &amp; ESTÚDIO</span>
+            <span class="s1-regua" id="s1-regua-d"></span>
+          </div>
+        </div>
+
+        <div id="s1-dive"></div>
+        <div id="s1-flash"></div>
+      </div>
+
+      <script>
+        (function () {
+          // Grade musical: 128 BPM.
+          const B = 60 / 128; // 0,46875 s
+          const SHAKE = 1 / 30;
+          const tl = gsap.timeline({ paused: true });
+
+          // ---- Ambiente: glow respira, texto-fantasma deriva.
+          tl.fromTo("#s1-bg-glow", { scale: 0.9, opacity: 0.6 }, { scale: 1.08, opacity: 1, duration: 1.875, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s1-ghost", { x: 0 }, { x: -520, duration: 1.875, ease: "none" }, 0);
+
+          // ---- Anéis de impacto: um por beat (center-outward-expansion).
+          ["#s1-ring-1", "#s1-ring-2", "#s1-ring-3"].forEach(function (sel, i) {
+            tl.fromTo(sel, { scale: 0.2, opacity: 0.9 }, { scale: 1.35, opacity: 0, duration: 0.8, ease: "expo.out" }, i * B);
+          });
+
+          // ---- Beat 0: peça branca bate (slam 2,4 → 1) + flash + tremor de 3 frames.
+          tl.fromTo(
+            "#s1-peca-m",
+            { scale: 2.4, rotation: -14, opacity: 0.5, transformOrigin: "50% 50%" },
+            { scale: 1, rotation: 0, opacity: 1, duration: 0.36, ease: "expo.out" },
+            0,
+          );
+          tl.fromTo("#s1-flash", { opacity: 0.6 }, { opacity: 0, duration: 0.22, ease: "power2.out" }, 0);
+          tl.to("#s1-stage", { x: 14, y: -9, duration: SHAKE, ease: "power2.out" }, 0.3);
+          tl.to("#s1-stage", { x: -10, y: 6, duration: SHAKE, ease: "power2.out" }, 0.3 + SHAKE);
+          tl.to("#s1-stage", { x: 0, y: 0, duration: SHAKE, ease: "power2.out" }, 0.3 + 2 * SHAKE);
+
+          // ---- Beat 1: peça dourada entra pelo eixo de 60° com rastro (motion-blur-streak).
+          const blurNode = document.getElementById("s1-streak-blur");
+          const blur = { v: 26 };
+          const writeBlur = function () {
+            blurNode.setAttribute("stdDeviation", (blur.v * 0.5).toFixed(2) + " " + blur.v.toFixed(2));
+          };
+          writeBlur();
+          tl.fromTo(
+            "#s1-peca-ouro",
+            { x: 420, y: -730, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 0.34, ease: "expo.out" },
+            B,
+          );
+          tl.fromTo(blur, { v: 26 }, { v: 0, duration: 0.34, ease: "expo.out", onUpdate: writeBlur, immediateRender: false }, B);
+
+          // ---- Beat 2: triângulo salta de baixo (spring-pop).
+          tl.fromTo(
+            "#s1-peca-tri",
+            { y: 260, scale: 0.2, rotation: 40, opacity: 0, transformOrigin: "50% 70%" },
+            { y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.42, ease: "back.out(2.2)" },
+            2 * B,
+          );
+
+          // ---- Wordmark: letras caem em cascata (1,0 → 1,3 s).
+          tl.fromTo(
+            "#s1-wordmark .s1-letra",
+            { y: -150, opacity: 0, rotationX: -80 },
+            { y: 0, opacity: 1, rotationX: 0, duration: 0.34, ease: "back.out(1.6)", stagger: 0.032 },
+            2 * B + 0.06,
+          );
+          // Régua dourada abre e revela o descritor.
+          tl.fromTo("#s1-regua-e", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 3 * B - 0.06);
+          tl.fromTo("#s1-regua-d", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 3 * B - 0.06);
+          tl.fromTo(
+            "#s1-tag-texto",
+            { opacity: 0, scaleX: 1.35, transformOrigin: "50% 50%" },
+            { opacity: 1, scaleX: 1, duration: 0.34, ease: "expo.out" },
+            3 * B - 0.04,
+          );
+
+          // ---- Mergulho na peça dourada (1,58 → 1,875): câmera empurra, peça cobre a tela.
+          const DIVE = 1.58;
+          tl.to("#s1-stage", { scale: 2.6, transformOrigin: "707px 624px", opacity: 0.0, duration: 0.29, ease: "power3.in" }, DIVE);
+          tl.fromTo(
+            "#s1-dive",
+            { opacity: 1, scale: 1, transformOrigin: "707px 624px" },
+            { opacity: 1, scale: 36, duration: 0.295, ease: "power3.in", immediateRender: false },
+            DIVE,
+          );
+          tl.set("#s1-dive", { opacity: 0 }, 0);
+          tl.set("#s1-dive", { opacity: 1 }, DIVE);
+
+          window.__timelines["s1-gancho"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

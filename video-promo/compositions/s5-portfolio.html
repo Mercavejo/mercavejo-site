@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>S5 — Prova: Portfólio de Impacto</title>
+  </head>
+  <body>
+    <template id="s5-portfolio-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0a192f;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #s5-glow {
+          position: absolute;
+          left: -300px;
+          top: 300px;
+          width: 1700px;
+          height: 1500px;
+          background: radial-gradient(circle at 50% 50%, rgba(15, 58, 125, 0.85) 0%, rgba(10, 25, 47, 0) 65%);
+        }
+        /* Mural 3D inclinado */
+        #s5-camera {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 1920px;
+          perspective: 1800px;
+        }
+        #s5-mural {
+          position: absolute;
+          left: -150px;
+          top: 240px;
+          width: 1380px;
+          height: 1500px;
+        }
+        .s5-col {
+          position: absolute;
+          top: 0;
+          width: 400px;
+          display: flex;
+          flex-direction: column;
+          gap: 28px;
+        }
+        #s5-col1 {
+          left: 0;
+        }
+        #s5-col2 {
+          left: 450px;
+        }
+        #s5-col3 {
+          left: 900px;
+        }
+        .s5-card {
+          display: block;
+          width: 400px;
+          border-radius: 26px;
+          overflow: hidden;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+          border: 3px solid rgba(255, 255, 255, 0.14);
+          background: #0f3a7d;
+        }
+        .s5-card img {
+          display: block;
+          width: 400px;
+          height: auto;
+        }
+        /* Título sobre o mural */
+        #s5-titulo-box {
+          position: absolute;
+          left: 60px;
+          top: 250px;
+          width: 960px;
+          padding: 34px 48px 40px;
+          border-radius: 36px;
+          background: rgba(1, 44, 71, 0.9);
+          border: 3px solid rgba(212, 182, 123, 0.7);
+        }
+        #s5-kicker {
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.2em;
+          color: #d4b67b;
+        }
+        .s5-titulo {
+          display: block;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 112px;
+          line-height: 1.02;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+        }
+        #s5-tit2 {
+          color: #d4b67b;
+        }
+        /* Faixa de clientes */
+        #s5-clientes {
+          position: absolute;
+          left: 0;
+          top: 1395px;
+          width: 1080px;
+          height: 210px;
+          background: rgba(10, 25, 47, 0.94);
+          border-top: 3px solid rgba(212, 182, 123, 0.6);
+        }
+        #s5-clientes-label {
+          position: absolute;
+          left: 0;
+          top: 22px;
+          width: 1080px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.12em;
+          color: #d4b67b;
+          white-space: nowrap;
+        }
+        #s5-logos {
+          position: absolute;
+          left: 0;
+          top: 82px;
+          display: flex;
+          gap: 22px;
+        }
+        .s5-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 190px;
+          height: 108px;
+          border-radius: 20px;
+          background: #0f3a7d;
+          border: 2px solid rgba(212, 182, 123, 0.45);
+          flex-shrink: 0;
+        }
+        .s5-logo.claro {
+          background: #f4efe4;
+        }
+        .s5-logo img {
+          display: block;
+          max-width: 150px;
+          max-height: 80px;
+        }
+        #s5-flash {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s5-portfolio" data-width="1080" data-height="1920">
+        <div id="s5-glow"></div>
+        <div id="s5-camera">
+          <div id="s5-mural">
+            <div class="s5-col" id="s5-col1">
+              <div class="s5-card"><img src="../assets/img/portfolio/exonline.webp" alt="Exonline" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/cafe-com-zakia.webp" alt="Site Café Com Zákia" /></div>
+              <div class="s5-card"><img src="../assets/img/portfolio/sublime.webp" alt="Sublime" /></div>
+              <div class="s5-card"><img src="../assets/img/portfolio/netflex.webp" alt="Netflex" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/mmrh.webp" alt="Site MMRH" /></div>
+            </div>
+            <div class="s5-col" id="s5-col2">
+              <div class="s5-card"><img src="../assets/img/portfolio/vox-fm.webp" alt="Vox FM" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/andre-borghi-advocacia.webp" alt="Site Andre Borghi Advocacia" /></div>
+              <div class="s5-card"><img src="../assets/img/portfolio/optica-brasil.webp" alt="Optica Brasil" /></div>
+              <div class="s5-card"><img src="../assets/img/portfolio/faveni.webp" alt="Faveni" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/daniel-devitto-zakia.webp" alt="Site Daniel Devitto Zákia" /></div>
+            </div>
+            <div class="s5-col" id="s5-col3">
+              <div class="s5-card"><img src="../assets/img/portfolio/rio-fibra.webp" alt="Rio Fibra" /></div>
+              <div class="s5-card"><img src="../assets/img/portfolio/acougue-scoz.webp" alt="Açougue Scoz" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/cec-vida-e-negocio.webp" alt="Site C&amp;C Vida e Negócio" /></div>
+              <div class="s5-card"><img src="../assets/img/sites/mateus-casarini.webp" alt="Site Mateus Casarini" /></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="s5-titulo-box">
+          <div id="s5-kicker">TRABALHOS REAIS</div>
+          <span class="s5-titulo" id="s5-tit1">Portfólio</span>
+          <span class="s5-titulo" id="s5-tit2">de Impacto</span>
+        </div>
+
+        <div id="s5-clientes">
+          <div id="s5-clientes-label">EMPRESAS QUE CONFIAM NA MERCAVEJO</div>
+          <div id="s5-logos">
+            <div class="s5-logo"><img src="../assets/img/clientes/exonline.webp" alt="Exonline" /></div>
+            <div class="s5-logo claro"><img src="../assets/img/clientes/fidelidade.webp" alt="Fidelidade" /></div>
+            <div class="s5-logo"><img src="../assets/img/clientes/optica.webp" alt="Optica Brasil" /></div>
+            <div class="s5-logo claro"><img src="../assets/img/clientes/luciana.webp" alt="Luciana Magazine" /></div>
+            <div class="s5-logo"><img src="../assets/img/clientes/riofibra.webp" alt="Rio Fibra" /></div>
+            <div class="s5-logo"><img src="../assets/img/clientes/netflex.webp" alt="Netflex" /></div>
+            <div class="s5-logo"><img src="../assets/img/clientes/scoz.webp" alt="Açougue Scoz" /></div>
+            <div class="s5-logo"><img src="../assets/img/clientes/voxfm.webp" alt="Vox FM" /></div>
+          </div>
+        </div>
+        <div id="s5-flash"></div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 1.875;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s5-glow", { scale: 0.9 }, { scale: 1.15, duration: D, ease: "sine.inOut" }, 0);
+
+          // Mural inclinado em 3D (split-tilt): entra da profundidade.
+          tl.fromTo(
+            "#s5-mural",
+            { rotationX: 26, rotationZ: -14, rotationY: 8, z: -900, scale: 1, transformOrigin: "50% 50%" },
+            { rotationX: 18, rotationZ: -11, rotationY: 4, z: 0, duration: 0.5, ease: "expo.out" },
+            0,
+          );
+          tl.fromTo(".s5-card", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)", stagger: 0.018 }, 0.02);
+
+          // Colunas correm em sentidos opostos e aceleram até o drop.
+          tl.fromTo("#s5-col1", { y: 200 }, { y: -1300, duration: D, ease: "power2.in" }, 0);
+          tl.fromTo("#s5-col2", { y: -1500 }, { y: 0, duration: D, ease: "power2.in" }, 0);
+          tl.fromTo("#s5-col3", { y: 100 }, { y: -1350, duration: D, ease: "power2.in" }, 0);
+
+          // Punch de câmera em cada beat.
+          for (let k = 1; k < 4; k++) {
+            tl.fromTo("#s5-camera", { scale: 1.045 }, { scale: 1, duration: 0.2, ease: "power2.out", immediateRender: false }, k * B);
+          }
+
+          // Título: caixa entra com mola, linhas sobem.
+          tl.fromTo("#s5-titulo-box", { opacity: 0, y: -80, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "back.out(1.8)" }, 0.06);
+          tl.fromTo(["#s5-tit1", "#s5-tit2"], { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out", stagger: 0.07 }, 0.12);
+
+          // Clientes: faixa sobe e logos correm.
+          tl.fromTo("#s5-clientes", { yPercent: 270 }, { yPercent: 0, duration: 0.3, ease: "power4.out" }, B);
+          tl.fromTo("#s5-logos", { x: 40 }, { x: -600, duration: D - B, ease: "none" }, B);
+
+          // Virada para o drop: zoom + flash (corte em 1,875 = 12,1875 global).
+          tl.to("#s5-camera", { scale: 1.5, duration: 0.42, ease: "power3.in" }, D - 0.42);
+          tl.fromTo("#s5-flash", { opacity: 0 }, { opacity: 0.9, duration: 0.2, ease: "power2.in" }, D - 0.2);
+
+          window.__timelines["s5-portfolio"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+# Artefatos locais do HyperFrames (checks, snapshots) e diretórios de trabalho
+.hyperframes/
+renders/
+build/

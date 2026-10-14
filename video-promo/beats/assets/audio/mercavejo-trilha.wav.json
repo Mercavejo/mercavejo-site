@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "audio": "assets/audio/mercavejo-trilha.wav",
+  "beats": [
+    {
+      "time": 0.014,
+      "strength": 1
+    },
+    {
+      "time": 0.483,
+      "strength": 0.772
+    },
+    {
+      "time": 0.952,
+      "strength": 0.757
+    },
+    {
+      "time": 1.89,
+      "strength": 0.748
+    },
+    {
+      "time": 2.358,
+      "strength": 0.824
+    },
+    {
+      "time": 2.827,
+      "strength": 0.811
+    },
+    {
+      "time": 3.296,
+      "strength": 0.822
+    },
+    {
+      "time": 3.765,
+      "strength": 0.81
+    },
+    {
+      "time": 4.233,
+      "strength": 0.818
+    },
+    {
+      "time": 4.702,
+      "strength": 0.869
+    },
+    {
+      "time": 5.171,
+      "strength": 0.819
+    },
+    {
+      "time": 5.64,
+      "strength": 0.81
+    },
+    {
+      "time": 6.108,
+      "strength": 0.818
+    },
+    {
+      "time": 6.577,
+      "strength": 0.806
+    },
+    {
+      "time": 7.046,
+      "strength": 0.82
+    },
+    {
+      "time": 7.515,
+      "strength": 0.809
+    },
+    {
+      "time": 7.983,
+      "strength": 0.818
+    },
+    {
+      "time": 8.452,
+      "strength": 0.871
+    },
+    {
+      "time": 8.921,
+      "strength": 0.819
+    },
+    {
+      "time": 9.39,
+      "strength": 0.81
+    },
+    {
+      "time": 9.858,
+      "strength": 0.818
+    },
+    {
+      "time": 10.327,
+      "strength": 0.872
+    },
+    {
+      "time": 10.796,
+      "strength": 0.82
+    },
+    {
+      "time": 11.265,
+      "strength": 0.737
+    },
+    {
+      "time": 11.733,
+      "strength": 0.748
+    },
+    {
+      "time": 12.202,
+      "strength": 0.741
+    },
+    {
+      "time": 12.671,
+      "strength": 0.756
+    },
+    {
+      "time": 13.14,
+      "strength": 0.719
+    },
+    {
+      "time": 13.608,
+      "strength": 0.714
+    },
+    {
+      "time": 14.077,
+      "strength": 0.616
+    },
+    {
+      "time": 14.546,
+      "strength": 0.208
+    }
+  ]
+}
