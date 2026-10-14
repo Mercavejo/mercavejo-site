@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "audio": "assets/audio/mercavejo-trilha-30s.wav",
+  "beats": [
+    {
+      "time": 0.007,
+      "strength": 1
+    },
+    {
+      "time": 0.476,
+      "strength": 0.688
+    },
+    {
+      "time": 0.945,
+      "strength": 0.664
+    },
+    {
+      "time": 1.882,
+      "strength": 0.695
+    },
+    {
+      "time": 2.351,
+      "strength": 0.775
+    },
+    {
+      "time": 2.82,
+      "strength": 0.755
+    },
+    {
+      "time": 3.289,
+      "strength": 0.755
+    },
+    {
+      "time": 3.757,
+      "strength": 0.754
+    },
+    {
+      "time": 4.226,
+      "strength": 0.767
+    },
+    {
+      "time": 4.695,
+      "strength": 0.755
+    },
+    {
+      "time": 5.164,
+      "strength": 0.765
+    },
+    {
+      "time": 5.632,
+      "strength": 0.702
+    },
+    {
+      "time": 6.101,
+      "strength": 0.134
+    },
+    {
+      "time": 6.57,
+      "strength": 0.642
+    },
+    {
+      "time": 7.507,
+      "strength": 0.646
+    },
+    {
+      "time": 7.976,
+      "strength": 0.164
+    },
+    {
+      "time": 8.445,
+      "strength": 0.649
+    },
+    {
+      "time": 8.914,
+      "strength": 0.174
+    },
+    {
+      "time": 9.382,
+      "strength": 0.826
+    },
+    {
+      "time": 9.851,
+      "strength": 0.741
+    },
+    {
+      "time": 10.32,
+      "strength": 0.756
+    },
+    {
+      "time": 10.789,
+      "strength": 0.745
+    },
+    {
+      "time": 11.257,
+      "strength": 0.821
+    },
+    {
+      "time": 11.726,
+      "strength": 0.723
+    },
+    {
+      "time": 12.195,
+      "strength": 0.756
+    },
+    {
+      "time": 12.664,
+      "strength": 0.746
+    },
+    {
+      "time": 13.132,
+      "strength": 0.821
+    },
+    {
+      "time": 13.601,
+      "strength": 0.755
+    },
+    {
+      "time": 14.07,
+      "strength": 0.755
+    },
+    {
+      "time": 14.539,
+      "strength": 0.768
+    },
+    {
+      "time": 15.007,
+      "strength": 0.699
+    },
+    {
+      "time": 15.476,
+      "strength": 0.724
+    },
+    {
+      "time": 15.945,
+      "strength": 0.756
+    },
+    {
+      "time": 16.414,
+      "strength": 0.752
+    },
+    {
+      "time": 16.882,
+      "strength": 0.754
+    },
+    {
+      "time": 17.351,
+      "strength": 0.766
+    },
+    {
+      "time": 17.82,
+      "strength": 0.756
+    },
+    {
+      "time": 18.289,
+      "strength": 0.769
+    },
+    {
+      "time": 18.757,
+      "strength": 0.815
+    },
+    {
+      "time": 19.226,
+      "strength": 0.717
+    },
+    {
+      "time": 19.695,
+      "strength": 0.756
+    },
+    {
+      "time": 20.164,
+      "strength": 0.746
+    },
+    {
+      "time": 20.632,
+      "strength": 0.755
+    },
+    {
+      "time": 21.101,
+      "strength": 0.767
+    },
+    {
+      "time": 21.57,
+      "strength": 0.755
+    },
+    {
+      "time": 22.039,
+      "strength": 0.768
+    },
+    {
+      "time": 22.507,
+      "strength": 0.815
+    },
+    {
+      "time": 22.976,
+      "strength": 0.716
+    },
+    {
+      "time": 23.445,
+      "strength": 0.755
+    },
+    {
+      "time": 23.914,
+      "strength": 0.745
+    },
+    {
+      "time": 24.382,
+      "strength": 0.754
+    },
+    {
+      "time": 24.851,
+      "strength": 0.764
+    },
+    {
+      "time": 25.32,
+      "strength": 0.688
+    },
+    {
+      "time": 25.789,
+      "strength": 0.703
+    },
+    {
+      "time": 26.257,
+      "strength": 0.675
+    },
+    {
+      "time": 26.726,
+      "strength": 0.708
+    },
+    {
+      "time": 27.195,
+      "strength": 0.67
+    },
+    {
+      "time": 27.664,
+      "strength": 0.667
+    },
+    {
+      "time": 28.132,
+      "strength": 0.58
+    },
+    {
+      "time": 28.601,
+      "strength": 0.569
+    },
+    {
+      "time": 29.07,
+      "strength": 0.38
+    },
+    {
+      "time": 29.539,
+      "strength": 0.378
+    }
+  ]
+}

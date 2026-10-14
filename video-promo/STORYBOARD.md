@@ -1,96 +1,97 @@
 ---
 format: 1080x1920
-duration: 15s
+duration: 30s
 fps: 60
-message: "Mercavejo: o melhor do marketing para o seu negócio — da estratégia ao estúdio."
-arc: Gancho (logo) → Manifesto → Serviços → Estúdio → Prova (portfólio) → Assinatura + CTA
-audience: donos de negócio de Catanduva e região, no feed vertical
+message: "Estúdio Mercavejo: o único estúdio de podcast profissional em uma agência de marketing — da gravação aos cortes e à publicação."
+arc: Gancho (logo) → Manifesto do estúdio → O estúdio → Diferenciais → Prova (cortes reais) → Podcasts → Produção completa → CTA
+audience: profissionais, médicos, empresários e criadores de Catanduva e região, no feed vertical
 mode: autonomous
 bpm: 128
 beat: 0.46875s
 bar: 1.875s
 ---
 
-# Storyboard — Mercavejo 15 s (9:16)
+# Storyboard — Mercavejo 30 s, foco no estúdio (9:16)
 
-Grade musical: 128 BPM, 8 compassos de 1,875 s. Todos os cortes acontecem em beats:
-`1,875 (b4) · 4,6875 (b10) · 8,4375 (b18) · 10,3125 (b22) · 12,1875 (b26)`.
+Grade musical: 128 BPM, 16 compassos de 1,875 s. Cortes em beat:
+`1,875 (b4) · 5,625 (b12) · 9,375 (b20) · 15,0 (b32) · 18,75 (b40) · 22,5 (b48) · 26,25 (b56)`, com trocas de card em 11,25 (b24) e 13,125 (b28).
 
 Camadas globais em `index.html`:
 
-- `compositions/transicoes.html`, de 0 a 15 s, acima das cenas. Lâminas em paralelogramo a 60° (a peça dourada do logo), flashes e o anel de choque, cobrindo cada corte.
-- Grão de filme (catálogo `grain-overlay`) + vinheta radial.
-- `assets/audio/mercavejo-trilha.wav`, de 0 a 15 s.
+- `compositions/transicoes-30.html`: lâminas em paralelogramo a 60° (a peça dourada do logo), glitch RGB, flash e anel de choque.
+- `compositions/acabamento.html`: vinheta + grão de filme (catálogo `grain-overlay`).
+- `assets/audio/mercavejo-trilha-30s.wav`, de 0 a 30 s.
+
+A versão de 15 s (agência) está no commit `7c29c7a`.
 
 ## Frame 1 — Gancho: o logo se monta no beat
 
-- scene: As 3 peças do símbolo batem uma por beat (0 · 0,47 · 0,94 s), "MERCAVEJO" cai letra a letra, a câmera mergulha na peça dourada
+- scene: As 3 peças do símbolo batem uma por beat, "MERCAVEJO" cai letra a letra e a câmera mergulha na peça dourada
 - duration: 1.875s
-- poster: 1.45s
-- transition_in: cut (abre o vídeo)
+- transition_in: cut
 - status: animated
 - src: compositions/s1-gancho.html
-- blueprint: logo-assemble-lockup (variante "parts-arrive" + "CTA push-through"); regras kinetic-beat-slam, motion-blur-streak, spring-pop-entrance
+- blueprint: logo-assemble-lockup; regras kinetic-beat-slam, motion-blur-streak, spring-pop-entrance
 
-Fundo navy `#012C47` com glow radial dourado. Beat 0: a peça branca em zigue-zague bate a 2,4× com flash branco e tremor de 3 frames. Beat 1: o paralelogramo dourado entra em diagonal pelo eixo de 60°, com rastro de movimento. Beat 2: o triângulo salta de baixo (back.out). Entre 1,0 e 1,35 s, "MERCAVEJO" (Poppins 900) cai letra a letra e "MARKETING & ESTÚDIO" é revelado por uma régua dourada. De 1,55 a 1,875 s, a câmera empurra para dentro da peça dourada, que ocupa a tela inteira e vira o fundo da cena 2.
+## Frame 2 — Manifesto do estúdio
 
-## Frame 2 — Manifesto: "O Melhor do MARKETING para seu Negócio"
-
-- scene: H1 real do site em tipografia cinética, uma palavra-bloco por beat, terminando no badge "Desde 2009 transformando negócios"
-- duration: 2.8125s
-- poster: 2.3s
-- transition_in: push-through (a peça dourada vira o fundo)
-- status: animated
-- src: compositions/s2-manifesto.html
-- blueprint: kinetic-type-beats; regras kinetic-beat-slam, scale-swap-transition
-
-- b4 (1,875): o fundo é dourado e "O MELHOR DO" bate em navy.
-- b5 (2,34): corte seco para navy, e "MARKETING" (dourado, ~215 px) entra estourando, com tremor e texto-fantasma.
-- b6 (2,81): "PARA SEU" desliza da esquerda.
-- b7 (3,28): "NEGÓCIO" (branco) sobe girando, e uma régua dourada desenha por baixo.
-- b8 (3,75): as quatro linhas se reorganizam na frase completa, e o badge entra com mola.
-- 4,45: lâmina dourada diagonal (overlay) para o corte.
-
-## Frame 3 — Serviços: um serviço por beat
-
-- scene: Âncora fixa "NOSSOS SERVIÇOS" + contador 01–08; o nome do serviço troca em corte seco a cada beat, cada um com uma entrada diferente
+- scene: "O ÚNICO / ESTÚDIO / DE PODCAST / PROFISSIONAL / EM UMA AGÊNCIA / DE MARKETING", uma palavra-bloco por beat sobre uma onda de áudio gigante; termina no selo "EXCLUSIVIDADE EM CATANDUVA"
 - duration: 3.75s
-- poster: 1.2s
-- transition_in: wipe (lâmina dourada a 60°)
+- transition_in: push-through (mergulho dourado)
 - status: animated
-- src: compositions/s3-servicos.html
-- blueprint: fixed-anchor-cycle (âncora fixa + região que cicla); regras discrete-text-sequence, kinetic-beat-slam
+- src: compositions/e2-manifesto.html
+- blueprint: kinetic-type-beats; regras kinetic-beat-slam
 
-Oito serviços reais, de 0,46875 s cada: Tráfego Pago · Google Ads · Redes Sociais · Criação de Sites · Vídeos Profissionais · Artes & Logotipos · Consultoria · Marketing na Saúde. O painel de fundo alterna navy / azul `#0F3A7D` / dourado no ritmo. Um número-fantasma gigante (01…08) desliza atrás, e a barra de progresso dourada avança por beat.
+## Frame 3 — O estúdio
 
-## Frame 4 — Estúdio Mercavejo
-
-- scene: Foto real do estúdio revelada por máscara em paralelogramo, com push-in lento; "Estúdio Mercavejo", "EXCLUSIVIDADE EM CATANDUVA" e a faixa com os podcasts gravados
-- duration: 1.875s
-- poster: 1.1s
-- transition_in: wipe (lâminas escalonadas dourado/azul/navy)
+- scene: Foto real do estúdio revelada por máscara a 60° com Ken Burns; "HUB DE CONTEÚDO / Estúdio Mercavejo" e depois "conversas / em autoridade / e vendas." (breakdown da trilha)
+- duration: 3.75s
+- transition_in: wipe (lâmina dourada)
 - status: animated
-- src: compositions/s4-estudio.html
-- blueprint: titlecard-reveal (adaptado: uma revelação + hold com Ken Burns); regras depth-of-field-blur, vertical-spring-ticker
+- src: compositions/e3-estudio.html
+- blueprint: titlecard-reveal (adaptado: revelação + hold com Ken Burns + troca de fase no b4)
 
-## Frame 5 — Prova: Portfólio de Impacto
+## Frame 4 — Por que gravar no Estúdio Mercavejo?
 
-- scene: Mural 3D inclinado com as artes reais e capturas dos sites, em colunas que correm em sentidos opostos e aceleram até o drop; faixa "Empresas que confiam na Mercavejo" com os logos
-- duration: 1.875s
-- poster: 0.9s
-- transition_in: glitch RGB + whip
+- scene: Âncora fixa com a pergunta real + contador 01–03; três cards de 1 compasso cada (Áudio Cristalino, Vídeo em 4K, Foco em Cortes), com ícones que se desenham, descrição real e chips com itens reais dos pacotes
+- duration: 5.625s
+- transition_in: wipe (3 lâminas escalonadas)
 - status: animated
-- src: compositions/s5-portfolio.html
-- blueprint: grid-card-assemble (mural que se monta + recuo de câmera); regras split-tilt-cards, chromatic-glitch
+- src: compositions/e4-diferenciais.html
+- blueprint: fixed-anchor-cycle; regras svg-path-draw, spring-pop-entrance
 
-## Frame 6 — Assinatura + CTA
+## Frame 5 — O Poder dos Cortes (prova)
 
-- scene: Flash branco e anel dourado no drop; as peças do logo convergem para o centro, MERCAVEJO + "Marketing & Estúdio", botão "Solicite um Orçamento" e "mercavejo.com.br" em destaque com brilho, mantido até o fim
-- duration: 2.8125s
-- poster: 2.2s
+- scene: Dois celulares inclinados exibindo cortes reais gravados no estúdio (Reels/TikTok, YouTube Shorts) e a contagem "1 EPISÓDIO DE 1 HORA PODE GERAR ATÉ 10 vídeos curtos de alto impacto" (segundo drop)
+- duration: 3.75s
+- transition_in: glitch RGB + flash
+- status: animated
+- src: compositions/e5-cortes.html
+- blueprint: video-text-pivot (adaptado) + dataviz-countup; regras split-tilt-cards, counting-dynamic-scale
+
+## Frame 6 — Podcasts de Sucesso
+
+- scene: Os 5 podcasts reais entram em linhas alternadas; uma faixa dourada "no ar" percorre a lista
+- duration: 3.75s
+- transition_in: wipe (lâminas azul e dourada)
+- status: animated
+- src: compositions/e6-podcasts.html
+- blueprint: grid-card-assemble (lista vertical que acumula)
+
+## Frame 7 — Produção Completa
+
+- scene: Pacote real "PRODUÇÃO COMPLETA"; "Nós cuidamos de tudo, do roteiro à publicação final." e um checklist de 5 itens, um por beat; virada de caixa no fim
+- duration: 3.75s
+- transition_in: wipe (lâminas navy e dourada)
+- status: animated
+- src: compositions/e7-producao.html
+- blueprint: grid-card-assemble (checklist); regras svg-path-draw
+
+## Frame 8 — Assinatura + CTA do estúdio
+
+- scene: Flash e anel dourado no drop; logo, MERCAVEJO, "Marketing & Estúdio", botão "Reservar meu Horário", mercavejo.com.br com brilho e WhatsApp (17) 99624-0418
+- duration: 3.75s
 - transition_in: flash
 - status: animated
-- src: compositions/s6-assinatura.html
-- blueprint: logo-assemble-lockup (Brand_Outro / CTA); regras spring-pop-entrance, gradient-text-sweep (shimmer)
-
-O URL fica legível de ~12,5 s a 15,0 s. Em b30 (14,06) entra o stab final, com pulso sutil no botão e na peça dourada.
+- src: compositions/e8-assinatura.html
+- blueprint: logo-assemble-lockup (Brand_Outro / CTA)

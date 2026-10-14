@@ -1,0 +1,24 @@
+{
+  "file": "assets/audio/mercavejo-trilha-30s.wav",
+  "seed": 20090101,
+  "bpm": 128.0,
+  "beat_s": 0.46875,
+  "bar_s": 1.875,
+  "duration_s": 30.0,
+  "integrated_lufs": -14.01,
+  "true_peak_dbtp": -2.3,
+  "scene_cuts_s": [
+    1.875,
+    5.625,
+    9.375,
+    15.0,
+    18.75,
+    22.5,
+    26.25
+  ],
+  "card_changes_s": [
+    11.25,
+    13.125
+  ],
+  "bars": 16
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transições (30 s) — lâminas da peça dourada (60°), glitch, flash</title>
+  </head>
+  <body>
+    <template id="transicoes-30-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        /* Lâmina: retângulo alto girado 30° → bordas a 60°, como a peça dourada do logo.
+           Com largura 3000 px, cobre a tela inteira enquanto o centro estiver em [−98, 1178] px. */
+        .tr-lamina {
+          position: absolute;
+          top: -1040px;
+          left: 0;
+          width: 3000px;
+          height: 4000px;
+          opacity: 0;
+        }
+        .tr-fio {
+          position: absolute;
+          top: -1040px;
+          left: 0;
+          width: 70px;
+          height: 4000px;
+          background: #ffffff;
+          opacity: 0;
+        }
+        .tr-faixa {
+          position: absolute;
+          left: -60px;
+          width: 1200px;
+          opacity: 0;
+        }
+        #tr-flash {
+          position: absolute;
+          inset: 0;
+          background: #ffffff;
+          opacity: 0;
+        }
+        #tr-anel {
+          position: absolute;
+          left: 90px;
+          top: 510px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          border: 22px solid #d4b67b;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="transicoes-30" data-width="1080" data-height="1920">
+        <div id="tr-laminas"></div>
+        <div id="tr-glitch"></div>
+        <div id="tr-anel"></div>
+        <div id="tr-flash"></div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const tl = gsap.timeline({ paused: true });
+          const HALF = 1500;
+          const cx = function (c) {
+            return c - HALF;
+          };
+          const host = document.getElementById("tr-laminas");
+          let seq = 0;
+          const novo = function (cls, cor) {
+            const el = document.createElement("div");
+            el.className = cls;
+            el.id = "tr-el" + seq++;
+            if (cor) el.style.background = cor;
+            host.appendChild(el);
+            return "#" + el.id;
+          };
+
+          // Lâminas em sequência que se cruzam no corte c. dir = +1 (E→D) ou −1 (D→E).
+          // A última cor da lista é a que cobre a tela no instante do corte.
+          const laminas = function (c, cores, dir) {
+            const n = cores.length;
+            cores.forEach(function (cor, k) {
+              const sel = novo("tr-lamina", cor);
+              const lag = (n - 1 - k) * 0.035;
+              const ini = dir > 0 ? -2600 : 3800;
+              const meio = dir > 0 ? 400 : 700;
+              const fim = dir > 0 ? 3700 : -2700;
+              tl.set(sel, { rotation: 30, transformOrigin: "50% 50%", opacity: 0 }, 0);
+              tl.set(sel, { opacity: 1, x: cx(ini) }, c - 0.18 - lag);
+              tl.to(sel, { x: cx(meio), duration: 0.18, ease: "power3.out" }, c - 0.18 - lag);
+              tl.to(sel, { x: cx(fim), duration: 0.15, ease: "power2.in" }, c - lag);
+              tl.set(sel, { opacity: 0 }, c + 0.16 - lag);
+            });
+            // fio branco na borda dianteira da última lâmina
+            const fio = novo("tr-fio");
+            const borda = function (bandCx) {
+              return dir > 0 ? bandCx + 1732 + 50 - 35 : bandCx - 1732 - 50 - 35;
+            };
+            tl.set(fio, { rotation: 30, transformOrigin: "50% 50%", opacity: 0 }, 0);
+            tl.set(fio, { opacity: 0.9, x: borda(dir > 0 ? -2600 : 3800) }, c - 0.18);
+            tl.to(fio, { x: borda(dir > 0 ? 400 : 700), duration: 0.18, ease: "power3.out" }, c - 0.18);
+            tl.set(fio, { opacity: 0 }, c);
+          };
+
+          // Glitch RGB com faixas determinísticas (cores da marca).
+          const glitch = function (c) {
+            const g = document.getElementById("tr-glitch");
+            const CORES = ["#d4b67b", "#0f3a7d", "#ffffff", "#d4b67b", "#20447d", "#c9a36a", "#012c47", "#d4b67b", "#ffffff", "#0f3a7d", "#d4b67b", "#20447d"];
+            for (let i = 0; i < 12; i++) {
+              const f = document.createElement("div");
+              f.className = "tr-faixa";
+              f.id = "tr-f" + i;
+              f.style.top = ((i * 173) % 1800) + "px";
+              f.style.height = 60 + ((i * 97) % 170) + "px";
+              f.style.background = CORES[i];
+              g.appendChild(f);
+              const off = function (k) {
+                const v = Math.sin((i + 1) * 12.9898 + (k + 1) * 78.233) * 43758.5453;
+                return ((v - Math.floor(v)) * 2 - 1) * 560;
+              };
+              const sel = "#tr-f" + i;
+              tl.set(sel, { opacity: 0.85, x: off(0) }, c - 0.1);
+              tl.set(sel, { x: off(1) }, c - 0.067);
+              tl.set(sel, { x: off(2), opacity: 1 }, c - 0.033);
+              tl.set(sel, { x: off(3) }, c);
+              tl.set(sel, { x: off(4), opacity: 0.6 }, c + 0.033);
+              tl.set(sel, { opacity: 0 }, c + 0.067 + (i % 3) * 0.017);
+            }
+            tl.fromTo("#tr-flash", { opacity: 0.7 }, { opacity: 0, duration: 0.12, ease: "power2.out", immediateRender: false }, c);
+          };
+
+          // Cortes (todos em beat; ver STORYBOARD.md).
+          // 1,875 — o mergulho dourado da cena 1 já cobre o corte; só um flash curto.
+          tl.fromTo("#tr-flash", { opacity: 0.55 }, { opacity: 0, duration: 0.14, ease: "power2.out", immediateRender: false }, 4 * B);
+          laminas(12 * B, ["#d4b67b"], +1); // 5,625: manifesto → foto do estúdio
+          laminas(20 * B, ["#012c47", "#0f3a7d", "#d4b67b"], -1); // 9,375: foto → diferenciais
+          glitch(32 * B); // 15,0: diferenciais → cortes
+          laminas(40 * B, ["#0f3a7d", "#d4b67b"], +1); // 18,75: cortes → podcasts
+          laminas(48 * B, ["#012c47", "#d4b67b"], -1); // 22,5: podcasts → produção completa
+          // 26,25 — drop final: flash branco + anel de choque dourado.
+          tl.fromTo("#tr-flash", { opacity: 1 }, { opacity: 0, duration: 0.38, ease: "expo.out", immediateRender: false }, 56 * B);
+          tl.fromTo("#tr-anel", { opacity: 1, scale: 0.15 }, { opacity: 0, scale: 2.4, duration: 0.7, ease: "expo.out", immediateRender: false }, 56 * B + 0.02);
+
+          window.__timelines["transicoes-30"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

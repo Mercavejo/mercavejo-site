@@ -2,13 +2,13 @@
 workflow: general-video
 flow: automation
 storyboard: no
-message: "Mercavejo: o melhor do marketing para o seu negócio — da estratégia ao estúdio."
+message: "Estúdio Mercavejo: o único estúdio de podcast profissional em uma agência de marketing — da gravação aos cortes e à publicação."
 destination: instagram-reels / tiktok / stories
 aspect: 1080x1920
 language: pt-BR
 audience: donos de negócio e profissionais liberais de Catanduva e região que rolam o feed
-length: 15s
-angle: brand-sizzle (logo → manifesto → serviços → estúdio → portfólio → CTA)
+length: 30s  # versão atual; a de 15 s (agência) está no commit 7c29c7a
+angle: estúdio (logo → manifesto do estúdio → foto → diferenciais → cortes reais → podcasts → produção completa → CTA)
 fps: 60
 ---
 
@@ -63,3 +63,29 @@ Todos foram copiados para `assets/`, e os muito grandes foram reduzidos. A orige
 9. **Prova:** só trabalhos reais (artes, sites, logos de clientes e nomes de podcasts que estão no site). Nenhum número de resultado aparece.
 10. **Safe zone do Reels:** todo texto importante fica entre y=220 e y=1600, com margem lateral ≥ 80 px. Títulos têm 96 px ou mais, e textos de apoio 34 px ou mais.
 11. **Revisão final:** o pedido era autônomo e pedia o MP4 final. A prévia no Studio foi substituída por snapshots de todas as cenas, revisados antes do render (`build/review/`).
+
+---
+
+## Versão 30 s — foco no estúdio de gravação (pedido de 14/10/2026)
+
+Pedido: "aumentar o tempo do vídeo promocional para 30 segundos e focar no estúdio de gravação".
+
+**Decisões e suposições**
+
+1. **Arquivo novo, não sobrescrito:** `mercavejo-promo-30s.mp4`. O `mercavejo-promo-15s.mp4` foi mantido. O código-fonte da versão de 15 s (cenas de serviços e portfólio) saiu da árvore atual, mas continua no commit `7c29c7a`.
+2. **Estrutura:** 16 compassos a 128 BPM = 30,0 s exatos, com cortes em 1,875 · 5,625 · 9,375 · 15,0 · 18,75 · 22,5 · 26,25 s (e trocas de card em 11,25 e 13,125).
+3. **O gancho (logo) foi mantido** da versão anterior. Ele já prova o nível de motion design e apresenta a marca antes do estúdio.
+4. **Todo o texto vem da página `/podcast` e do componente `Studio.tsx`** (ver BRAND.md § 9). Duas adaptações de layout, sem mudar o sentido:
+   - O H1 foi quebrado em linhas: "O ÚNICO / ESTÚDIO / DE PODCAST / PROFISSIONAL / EM UMA AGÊNCIA / DE MARKETING".
+   - A frase "1 episódio de 1 hora pode gerar até 10 vídeos curtos de alto impacto" virou contagem 1→10. "Um episódio" foi escrito como "1 episódio".
+5. **Vídeos reais:** foram usados trechos de 4,2 s de `corte1.mp4` (a partir de 4 s) e `corte2.mp4` (a partir de 8 s), os mesmos publicados na seção "O Poder dos Cortes" do site. São trechos sem legenda queimada, **sem áudio** (só a trilha), reduzidos para 720×1280 em `assets/video/`.
+6. **CTA do estúdio:** "Reservar meu Horário" (botão real da página) + mercavejo.com.br + WhatsApp (17) 99624-0418, legíveis de ~26,6 s a 30 s (≥ 3,3 s).
+7. **Preço fora do vídeo:** a página mostra "Locação de Estúdio — R$ 400". Deixei o preço de fora, porque preço em anúncio envelhece rápido e depende de decisão comercial. Os itens do pacote entraram (microfones Shure/Rode, técnico de áudio, cenário e iluminação). É fácil incluir se quiserem.
+8. **Trilha:** `scripts/make_music_30s.py` (mesma semente e mesmos instrumentos, agora em `scripts/trilha_base.py`). Tem breakdown na foto do estúdio, segundo drop nos cortes e drop final na assinatura.
+9. **Loudness, ajuste técnico:** o render do HyperFrames atenuou a mix inteira em 1,7 dB quando a trilha tinha pico real de −1,4 dBTP (o MP4 saía com −15,8 LUFS). Isso foi confirmado em teste A/B: vídeos e `TMPDIR` não influenciavam; só o arquivo de áudio. A trilha de 30 s agora usa teto de −2,5 dBFS, e o MP4 final mede **−14,1 LUFS e −1,8 dBTP**.
+10. **Ficou de fora:**
+    - **Terápico:** continua sem material.
+    - **Depoimentos e números:** a seção está oculta no site.
+    - **Preço do estúdio:** ver item 7.
+    - **O áudio original dos cortes:** a fala seria cortada no meio, e o vídeo não tem narração.
+

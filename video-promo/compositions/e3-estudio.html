@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E3 — Estúdio Mercavejo: conversas em autoridade e vendas</title>
+  </head>
+  <body>
+    <template id="e3-estudio-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #012c47;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #e3-foto-mask {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          clip-path: polygon(-40% 0%, 140% 0%, 120% 100%, -60% 100%);
+        }
+        #e3-foto {
+          position: absolute;
+          left: -180px;
+          top: 0;
+          width: 1440px;
+          height: 1920px;
+          object-fit: cover;
+        }
+        #e3-sombra {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 125% 62% at 50% 100%, rgba(1, 44, 71, 0.97) 32%, rgba(1, 44, 71, 0) 76%),
+            radial-gradient(ellipse 110% 35% at 50% 0%, rgba(1, 44, 71, 0.8) 20%, rgba(1, 44, 71, 0) 80%);
+        }
+        #e3-ondas {
+          position: absolute;
+          left: 80px;
+          top: 250px;
+          width: 920px;
+          height: 120px;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+        }
+        .e3-barra {
+          display: block;
+          width: 14px;
+          height: 120px;
+          border-radius: 7px;
+          background: #d4b67b;
+        }
+        #e3-pill {
+          position: absolute;
+          left: 80px;
+          top: 1000px;
+          padding: 14px 28px;
+          border-radius: 999px;
+          background: #d4b67b;
+          color: #012c47;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.14em;
+          white-space: nowrap;
+        }
+        .e3-mask {
+          position: absolute;
+          left: 80px;
+          width: 960px;
+          overflow: hidden;
+        }
+        .e3-txt {
+          display: block;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          line-height: 1.05;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+        }
+        /* Fase A: título */
+        #e3-t1m {
+          top: 1086px;
+          height: 160px;
+        }
+        #e3-t2m {
+          top: 1226px;
+          height: 160px;
+        }
+        #e3-t1,
+        #e3-t2 {
+          font-size: 144px;
+        }
+        #e3-t2 {
+          color: #d4b67b;
+        }
+        /* Fase B: "conversas em autoridade e vendas" (trecho literal da página /podcast) */
+        #e3-k0 {
+          position: absolute;
+          left: 80px;
+          top: 1010px;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.88);
+          white-space: nowrap;
+        }
+        #e3-k1m {
+          top: 1070px;
+          height: 118px;
+        }
+        #e3-k2m {
+          top: 1180px;
+          height: 118px;
+        }
+        #e3-k3m {
+          top: 1290px;
+          height: 118px;
+        }
+        #e3-k1,
+        #e3-k2,
+        #e3-k3 {
+          font-size: 104px;
+        }
+        #e3-k2 {
+          color: #d4b67b;
+        }
+        #e3-regua {
+          position: absolute;
+          left: 80px;
+          top: 1440px;
+          width: 300px;
+          height: 10px;
+          background: #d4b67b;
+        }
+      </style>
+
+      <div id="root" data-composition-id="e3-estudio" data-width="1080" data-height="1920">
+        <div id="e3-whip">
+          <div id="e3-foto-mask">
+            <img id="e3-foto" src="../assets/img/estudio.webp" alt="Estúdio Mercavejo" />
+          </div>
+          <div id="e3-sombra"></div>
+          <div id="e3-ondas" aria-hidden="true" data-layout-ignore></div>
+
+          <!-- Fase A -->
+          <div id="e3-pill">HUB DE CONTEÚDO</div>
+          <div class="e3-mask" id="e3-t1m"><span class="e3-txt" id="e3-t1">Estúdio</span></div>
+          <div class="e3-mask" id="e3-t2m"><span class="e3-txt" id="e3-t2">Mercavejo</span></div>
+
+          <!-- Fase B -->
+          <div id="e3-k0">ESTÚDIO PRÓPRIO FOCADO EM TRANSFORMAR</div>
+          <div class="e3-mask" id="e3-k1m"><span class="e3-txt" id="e3-k1">conversas</span></div>
+          <div class="e3-mask" id="e3-k2m"><span class="e3-txt" id="e3-k2">em autoridade</span></div>
+          <div class="e3-mask" id="e3-k3m"><span class="e3-txt" id="e3-k3">e vendas.</span></div>
+          <div id="e3-regua"></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 3.75;
+          const tl = gsap.timeline({ paused: true });
+
+          // Barras de áudio (podcast): alturas determinísticas, pulso por beat.
+          const ondas = document.getElementById("e3-ondas");
+          const N = 40;
+          for (let i = 0; i < N; i++) {
+            const b = document.createElement("span");
+            b.className = "e3-barra";
+            b.id = "e3-b" + i;
+            ondas.appendChild(b);
+          }
+          for (let i = 0; i < N; i++) {
+            const base = 0.16 + 0.45 * Math.abs(Math.sin(i * 0.61) * Math.cos(i * 0.23));
+            for (let k = 0; k < 8; k++) {
+              // meio-tempo no breakdown: pulso forte nos beats pares
+              const amp = k % 2 === 0 ? 0.6 : 0.3;
+              const peak = Math.min(1, base + amp * Math.abs(Math.sin(i * 1.37 + k * 2.1)));
+              tl.fromTo("#e3-b" + i, { scaleY: peak }, { scaleY: base * 0.6, duration: B, ease: "power2.out", immediateRender: k === 0 }, k * B);
+            }
+          }
+
+          // Revelação em paralelogramo (60°) + Ken Burns lento por toda a cena.
+          tl.fromTo(
+            "#e3-foto-mask",
+            { clipPath: "polygon(48% 40%, 60% 40%, 52% 60%, 40% 60%)" },
+            { clipPath: "polygon(-40% 0%, 140% 0%, 120% 100%, -60% 100%)", duration: 0.5, ease: "expo.out" },
+            0,
+          );
+          tl.fromTo("#e3-foto", { scale: 1.32, x: 60, y: 0 }, { scale: 1.04, x: -30, y: -20, duration: D, ease: "power1.out" }, 0);
+          tl.fromTo("#e3-sombra", { opacity: 0.4 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+
+          // Fase A (b0–b3): selo + título.
+          tl.fromTo("#e3-pill", { opacity: 0, x: -80, scale: 0.8 }, { opacity: 1, x: 0, scale: 1, duration: 0.32, ease: "back.out(2)" }, B * 0.5);
+          tl.fromTo("#e3-t1", { yPercent: 105 }, { yPercent: 0, duration: 0.34, ease: "power4.out" }, B);
+          tl.fromTo("#e3-t2", { yPercent: 105 }, { yPercent: 0, duration: 0.34, ease: "power4.out" }, B + 0.1);
+          // troca de fase no b4: título sai por cima das máscaras
+          tl.to("#e3-t1", { yPercent: -105, duration: 0.24, ease: "power3.in" }, 4 * B - 0.22);
+          tl.to("#e3-t2", { yPercent: -105, duration: 0.24, ease: "power3.in" }, 4 * B - 0.18);
+          tl.to("#e3-pill", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 4 * B - 0.2);
+          tl.set(["#e3-t1m", "#e3-t2m", "#e3-pill"], { opacity: 0 }, 4 * B);
+
+          // Fase B (b4–b6): uma palavra-bloco por beat.
+          tl.fromTo("#e3-k0", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 4 * B);
+          tl.fromTo("#e3-k1", { yPercent: 105 }, { yPercent: 0, duration: 0.3, ease: "power4.out" }, 4 * B);
+          tl.fromTo("#e3-k2", { yPercent: 105 }, { yPercent: 0, duration: 0.3, ease: "power4.out" }, 5 * B);
+          tl.fromTo("#e3-k3", { yPercent: 105 }, { yPercent: 0, duration: 0.3, ease: "power4.out" }, 6 * B);
+          tl.fromTo("#e3-regua", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 6 * B + 0.1);
+          tl.set(["#e3-k0", "#e3-k1", "#e3-k2", "#e3-k3", "#e3-regua"], { opacity: 0 }, 0);
+          tl.set(["#e3-k0", "#e3-k1", "#e3-k2", "#e3-k3", "#e3-regua"], { opacity: 1 }, 4 * B);
+
+          window.__timelines["e3-estudio"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

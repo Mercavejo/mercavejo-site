@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <title>Mercavejo — Promo 15s (9:16)</title>
+    <title>Mercavejo — Promo 30s Estúdio (9:16)</title>
     <script src="assets/vendor/gsap.min.js"></script>
     <style>
       @font-face {
@@ -59,12 +59,12 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="15"
+      data-duration="30"
       data-fps="60"
       data-width="1080"
       data-height="1920"
     >
-      <!-- Cenas: uma sub-composição por cena, cortes nos beats (128 BPM). -->
+      <!-- Cenas: uma sub-composição por cena, cortes nos beats (128 BPM; 1 beat = 0,46875 s). -->
       <div
         id="el-s1"
         data-composition-id="s1-gancho"
@@ -76,51 +76,71 @@
         data-height="1920"
       ></div>
       <div
-        id="el-s2"
-        data-composition-id="s2-manifesto"
-        data-composition-src="compositions/s2-manifesto.html"
+        id="el-e2"
+        data-composition-id="e2-manifesto"
+        data-composition-src="compositions/e2-manifesto.html"
         data-start="1.875"
-        data-duration="2.8125"
-        data-track-index="1"
-        data-width="1080"
-        data-height="1920"
-      ></div>
-      <div
-        id="el-s3"
-        data-composition-id="s3-servicos"
-        data-composition-src="compositions/s3-servicos.html"
-        data-start="4.6875"
         data-duration="3.75"
         data-track-index="1"
         data-width="1080"
         data-height="1920"
       ></div>
       <div
-        id="el-s4"
-        data-composition-id="s4-estudio"
-        data-composition-src="compositions/s4-estudio.html"
-        data-start="8.4375"
-        data-duration="1.875"
+        id="el-e3"
+        data-composition-id="e3-estudio"
+        data-composition-src="compositions/e3-estudio.html"
+        data-start="5.625"
+        data-duration="3.75"
         data-track-index="1"
         data-width="1080"
         data-height="1920"
       ></div>
       <div
-        id="el-s5"
-        data-composition-id="s5-portfolio"
-        data-composition-src="compositions/s5-portfolio.html"
-        data-start="10.3125"
-        data-duration="1.875"
+        id="el-e4"
+        data-composition-id="e4-diferenciais"
+        data-composition-src="compositions/e4-diferenciais.html"
+        data-start="9.375"
+        data-duration="5.625"
         data-track-index="1"
         data-width="1080"
         data-height="1920"
       ></div>
       <div
-        id="el-s6"
-        data-composition-id="s6-assinatura"
-        data-composition-src="compositions/s6-assinatura.html"
-        data-start="12.1875"
-        data-duration="2.8125"
+        id="el-e5"
+        data-composition-id="e5-cortes"
+        data-composition-src="compositions/e5-cortes.html"
+        data-start="15"
+        data-duration="3.75"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-e6"
+        data-composition-id="e6-podcasts"
+        data-composition-src="compositions/e6-podcasts.html"
+        data-start="18.75"
+        data-duration="3.75"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-e7"
+        data-composition-id="e7-producao"
+        data-composition-src="compositions/e7-producao.html"
+        data-start="22.5"
+        data-duration="3.75"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="el-e8"
+        data-composition-id="e8-assinatura"
+        data-composition-src="compositions/e8-assinatura.html"
+        data-start="26.25"
+        data-duration="3.75"
         data-track-index="1"
         data-width="1080"
         data-height="1920"
@@ -129,10 +149,10 @@
       <!-- Camada de transições (lâminas a 60° da peça dourada), acima das cenas. -->
       <div
         id="el-transicoes"
-        data-composition-id="transicoes"
-        data-composition-src="compositions/transicoes.html"
+        data-composition-id="transicoes-30"
+        data-composition-src="compositions/transicoes-30.html"
         data-start="0"
-        data-duration="15"
+        data-duration="30"
         data-track-index="2"
         data-width="1080"
         data-height="1920"
@@ -144,19 +164,19 @@
         data-composition-id="acabamento"
         data-composition-src="compositions/acabamento.html"
         data-start="0"
-        data-duration="15"
+        data-duration="30"
         data-track-index="3"
         data-width="1080"
         data-height="1920"
       ></div>
 
-      <!-- Trilha original (scripts/make_music.py), −14 LUFS. -->
+      <!-- Trilha original 30 s (scripts/make_music_30s.py), −14 LUFS. -->
       <audio
         id="el-trilha"
         data-timeline-role="music"
-        src="assets/audio/mercavejo-trilha.wav"
+        src="assets/audio/mercavejo-trilha-30s.wav"
         data-start="0"
-        data-duration="15"
+        data-duration="30"
         data-track-index="10"
         data-volume="1"
       ></audio>

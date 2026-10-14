@@ -2,10 +2,10 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>S6 — Assinatura + CTA</title>
+    <title>E8 — Assinatura + CTA do estúdio</title>
   </head>
   <body>
-    <template id="s6-assinatura-template">
+    <template id="e8-assinatura-template">
       <style>
         @font-face {
           font-family: "Poppins";
@@ -39,7 +39,7 @@
           color: #ffffff;
           font-family: "Inter", sans-serif;
         }
-        #s6-glow {
+        #e8-glow {
           position: absolute;
           left: -310px;
           top: 0px;
@@ -52,7 +52,7 @@
             rgba(1, 44, 71, 0) 68%
           );
         }
-        #s6-ghost {
+        #e8-ghost {
           position: absolute;
           left: 0;
           top: 1600px;
@@ -64,7 +64,7 @@
           white-space: nowrap;
           color: rgba(255, 255, 255, 0.06);
         }
-        #s6-logo {
+        #e8-logo {
           position: absolute;
           left: 270px;
           top: 330px;
@@ -72,7 +72,7 @@
           height: 386px;
           overflow: visible;
         }
-        #s6-wordmark {
+        #e8-wordmark {
           position: absolute;
           left: 0;
           top: 770px;
@@ -85,7 +85,7 @@
           letter-spacing: 0.01em;
           white-space: nowrap;
         }
-        #s6-tag {
+        #e8-tag {
           position: absolute;
           left: 0;
           top: 935px;
@@ -95,13 +95,13 @@
           justify-content: center;
           gap: 26px;
         }
-        .s6-regua {
+        .e8-regua {
           display: block;
           width: 110px;
           height: 4px;
           background: #d4b67b;
         }
-        #s6-tag-texto {
+        #e8-tag-texto {
           display: block;
           font-weight: 700;
           font-size: 38px;
@@ -109,7 +109,7 @@
           color: #d4b67b;
           white-space: nowrap;
         }
-        #s6-cta {
+        #e8-cta {
           position: absolute;
           left: 0;
           top: 1080px;
@@ -117,7 +117,7 @@
           display: flex;
           justify-content: center;
         }
-        #s6-cta-pill {
+        #e8-cta-pill {
           display: flex;
           align-items: center;
           gap: 22px;
@@ -130,14 +130,14 @@
           white-space: nowrap;
           box-shadow: 0 24px 60px rgba(212, 182, 123, 0.28);
         }
-        #s6-seta {
+        #e8-seta {
           display: block;
           width: 40px;
           height: 32px;
           background: #012c47;
           clip-path: polygon(0 12px, 24px 12px, 24px 0, 40px 16px, 24px 32px, 24px 20px, 0 20px);
         }
-        #s6-url-box {
+        #e8-url-box {
           position: absolute;
           left: 60px;
           top: 1265px;
@@ -145,7 +145,7 @@
           height: 150px;
           overflow: hidden;
         }
-        #s6-url {
+        #e8-url {
           position: absolute;
           left: 0;
           top: 14px;
@@ -161,7 +161,7 @@
         }
         /* Brilho especular — adaptado do catálogo shimmer-sweep: em vez de overlay (que clareia o
            fundo), uma janela estreita percorre o URL revelando uma cópia em dourado-claro. */
-        #s6-brilho-janela {
+        #e8-brilho-janela {
           position: absolute;
           left: 0;
           top: 0;
@@ -169,7 +169,7 @@
           height: 150px;
           overflow: hidden;
         }
-        #s6-brilho {
+        #e8-brilho {
           position: absolute;
           left: 0;
           top: 14px;
@@ -183,7 +183,7 @@
           color: #f3e3bd;
           white-space: nowrap;
         }
-        #s6-url-borda {
+        #e8-url-borda {
           position: absolute;
           left: 0;
           top: 0;
@@ -192,7 +192,7 @@
           background: #d4b67b;
           opacity: 0;
         }
-        #s6-url-linha {
+        #e8-url-linha {
           position: absolute;
           left: 240px;
           top: 1420px;
@@ -200,7 +200,7 @@
           height: 6px;
           background: #d4b67b;
         }
-        #s6-rodape {
+        #e8-rodape {
           position: absolute;
           left: 0;
           top: 1465px;
@@ -214,87 +214,87 @@
         }
       </style>
 
-      <div id="root" data-composition-id="s6-assinatura" data-width="1080" data-height="1920">
-        <div id="s6-glow"></div>
-        <div id="s6-ghost" aria-hidden="true" data-layout-ignore>MERCAVEJO MERCAVEJO</div>
+      <div id="root" data-composition-id="e8-assinatura" data-width="1080" data-height="1920">
+        <div id="e8-glow"></div>
+        <div id="e8-ghost" aria-hidden="true" data-layout-ignore>MERCAVEJO MERCAVEJO</div>
 
-        <svg id="s6-logo" viewBox="120 660 840 600" xmlns="http://www.w3.org/2000/svg" aria-label="Símbolo Mercavejo">
+        <svg id="e8-logo" viewBox="120 660 840 600" xmlns="http://www.w3.org/2000/svg" aria-label="Símbolo Mercavejo">
           <g stroke-linejoin="round" stroke-width="17">
             <path
-              id="s6-peca-m"
+              id="e8-peca-m"
               fill="#ffffff"
               stroke="#ffffff"
               d="M221 680 L374 680 L540 940 L560 910 L731 910 L540 1238 L381 980 L309 1101 L142 1101 L292 826 Z"
             />
-            <path id="s6-peca-ouro" fill="#d4b67b" stroke="#d4b67b" d="M694 680 L860 680 L779 829 L609 829 Z" />
-            <path id="s6-peca-tri" fill="#ffffff" stroke="#ffffff" d="M854 955 L938 1101 L771 1101 Z" />
+            <path id="e8-peca-ouro" fill="#d4b67b" stroke="#d4b67b" d="M694 680 L860 680 L779 829 L609 829 Z" />
+            <path id="e8-peca-tri" fill="#ffffff" stroke="#ffffff" d="M854 955 L938 1101 L771 1101 Z" />
           </g>
         </svg>
 
-        <div id="s6-wordmark">MERCAVEJO</div>
-        <div id="s6-tag">
-          <span class="s6-regua" id="s6-regua-e"></span>
-          <span id="s6-tag-texto">MARKETING &amp; ESTÚDIO</span>
-          <span class="s6-regua" id="s6-regua-d"></span>
+        <div id="e8-wordmark">MERCAVEJO</div>
+        <div id="e8-tag">
+          <span class="e8-regua" id="e8-regua-e"></span>
+          <span id="e8-tag-texto">MARKETING &amp; ESTÚDIO</span>
+          <span class="e8-regua" id="e8-regua-d"></span>
         </div>
 
-        <div id="s6-cta">
-          <div id="s6-cta-pill">Solicite um Orçamento <span id="s6-seta"></span></div>
+        <div id="e8-cta">
+          <div id="e8-cta-pill">Reservar meu Horário <span id="e8-seta"></span></div>
         </div>
 
-        <div id="s6-url-box">
-          <div id="s6-url">mercavejo.com.br</div>
-          <div id="s6-brilho-janela" aria-hidden="true" data-layout-ignore><div id="s6-brilho">mercavejo.com.br</div></div>
-          <div id="s6-url-borda"></div>
+        <div id="e8-url-box">
+          <div id="e8-url">mercavejo.com.br</div>
+          <div id="e8-brilho-janela" aria-hidden="true" data-layout-ignore><div id="e8-brilho">mercavejo.com.br</div></div>
+          <div id="e8-url-borda"></div>
         </div>
-        <div id="s6-url-linha"></div>
-        <div id="s6-rodape">Catanduva · SP  —  @mercavejo_consultoria</div>
+        <div id="e8-url-linha"></div>
+        <div id="e8-rodape">WhatsApp (17) 99624-0418  ·  Catanduva-SP</div>
       </div>
 
       <script>
         (function () {
           const B = 60 / 128;
-          const D = 2.8125;
+          const D = 3.75;
           const tl = gsap.timeline({ paused: true });
 
-          tl.fromTo("#s6-glow", { scale: 0.85, opacity: 0.6 }, { scale: 1.08, opacity: 1, duration: D, ease: "sine.out" }, 0);
-          tl.fromTo("#s6-ghost", { x: 0 }, { x: -600, duration: D, ease: "none" }, 0);
+          tl.fromTo("#e8-glow", { scale: 0.85, opacity: 0.6 }, { scale: 1.08, opacity: 1, duration: D, ease: "sine.out" }, 0);
+          tl.fromTo("#e8-ghost", { x: 0 }, { x: -600, duration: D, ease: "none" }, 0);
 
           // Peças convergem para o centro no drop (logo-assemble-lockup, parts-arrive).
-          tl.fromTo("#s6-peca-m", { x: -700, rotation: -30, opacity: 0, transformOrigin: "50% 50%" }, { x: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0);
-          tl.fromTo("#s6-peca-ouro", { x: 520, y: -900, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.04);
-          tl.fromTo("#s6-peca-tri", { x: 500, y: 600, rotation: 90, opacity: 0, transformOrigin: "50% 60%" }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.08);
-          tl.fromTo("#s6-logo", { scale: 1.25 }, { scale: 1, duration: 0.6, ease: "power3.out", transformOrigin: "50% 50%" }, 0);
+          tl.fromTo("#e8-peca-m", { x: -700, rotation: -30, opacity: 0, transformOrigin: "50% 50%" }, { x: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0);
+          tl.fromTo("#e8-peca-ouro", { x: 520, y: -900, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.04);
+          tl.fromTo("#e8-peca-tri", { x: 500, y: 600, rotation: 90, opacity: 0, transformOrigin: "50% 60%" }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.08);
+          tl.fromTo("#e8-logo", { scale: 1.25 }, { scale: 1, duration: 0.6, ease: "power3.out", transformOrigin: "50% 50%" }, 0);
 
           // Wordmark + descritor.
-          tl.fromTo("#s6-wordmark", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "power4.out" }, 0.16);
-          tl.fromTo("#s6-regua-e", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
-          tl.fromTo("#s6-regua-d", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
-          tl.fromTo("#s6-tag-texto", { opacity: 0, scaleX: 1.3 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.3);
+          tl.fromTo("#e8-wordmark", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "power4.out" }, 0.16);
+          tl.fromTo("#e8-regua-e", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
+          tl.fromTo("#e8-regua-d", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.3);
+          tl.fromTo("#e8-tag-texto", { opacity: 0, scaleX: 1.3 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.3);
 
           // URL: wipe da esquerda p/ direita com borda dourada (legível a partir de ~0,55 s local = 12,74 global).
-          tl.fromTo("#s6-url", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.36, ease: "power3.inOut" }, 0.2);
-          tl.fromTo("#s6-url-borda", { x: 0, opacity: 1 }, { x: 946, opacity: 1, duration: 0.36, ease: "power3.inOut", immediateRender: false }, 0.2);
-          tl.to("#s6-url-borda", { opacity: 0, duration: 0.12 }, 0.56);
-          tl.fromTo("#s6-url-linha", { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.48);
+          tl.fromTo("#e8-url", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.36, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#e8-url-borda", { x: 0, opacity: 1 }, { x: 946, opacity: 1, duration: 0.36, ease: "power3.inOut", immediateRender: false }, 0.2);
+          tl.to("#e8-url-borda", { opacity: 0, duration: 0.12 }, 0.56);
+          tl.fromTo("#e8-url-linha", { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, duration: 0.3, ease: "power4.out" }, 0.48);
 
           // CTA (texto real do site) entra com mola no beat.
-          tl.fromTo("#s6-cta-pill", { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2.2)" }, B);
-          tl.fromTo("#s6-rodape", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2 * B);
-          tl.fromTo("#s6-seta", { x: 0 }, { x: 10, duration: B / 2, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 2 * B);
+          tl.fromTo("#e8-cta-pill", { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2.2)" }, B);
+          tl.fromTo("#e8-rodape", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2 * B);
+          tl.fromTo("#e8-seta", { x: 0 }, { x: 10, duration: B / 2, ease: "sine.inOut", yoyo: true, repeat: 11, immediateRender: false }, 2 * B);
 
           // Brilho no URL (2 passadas).
           // janela anda de -90 a 980 px; o texto interno anda o oposto e fica alinhado ao URL.
-          [0.75, 1.95].forEach(function (t0) {
-            tl.fromTo("#s6-brilho-janela", { x: -90 }, { x: 980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
-            tl.fromTo("#s6-brilho", { x: 90 }, { x: -980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
+          [0.75, 1.95, 3.0].forEach(function (t0) {
+            tl.fromTo("#e8-brilho-janela", { x: -90 }, { x: 980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
+            tl.fromTo("#e8-brilho", { x: 90 }, { x: -980, duration: 0.6, ease: "power2.inOut", immediateRender: t0 === 0.75 }, t0);
           });
 
           // Stab final em b30 (local 1,875): pulso na peça dourada e no botão.
-          tl.fromTo("#s6-peca-ouro", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.12, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
-          tl.fromTo("#s6-cta-pill", { scale: 1 }, { scale: 1.05, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
+          tl.fromTo("#e8-peca-ouro", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.12, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
+          tl.fromTo("#e8-cta-pill", { scale: 1 }, { scale: 1.05, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 4 * B);
 
-          window.__timelines["s6-assinatura"] = tl;
+          window.__timelines["e8-assinatura"] = tl;
         })();
       </script>
     </template>

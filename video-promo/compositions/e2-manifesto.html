@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E2 — Manifesto do estúdio: O Único Estúdio de Podcast Profissional em uma Agência de Marketing</title>
+  </head>
+  <body>
+    <template id="e2-manifesto-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #012c47;
+          color: #ffffff;
+          font-family: "Poppins", sans-serif;
+        }
+        #e2-ouro {
+          position: absolute;
+          inset: 0;
+          background: #d4b67b;
+        }
+        #e2-glow {
+          position: absolute;
+          left: -300px;
+          top: 260px;
+          width: 1680px;
+          height: 1500px;
+          background: radial-gradient(
+            circle at 50% 45%,
+            rgba(15, 58, 125, 0.75) 0%,
+            rgba(32, 68, 125, 0.35) 38%,
+            rgba(1, 44, 71, 0) 70%
+          );
+        }
+        /* Onda de áudio gigante ao fundo (decorativa), pulsa no beat. */
+        #e2-onda {
+          position: absolute;
+          left: 40px;
+          top: 560px;
+          width: 1000px;
+          height: 700px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .e2-barra {
+          display: block;
+          width: 18px;
+          height: 700px;
+          border-radius: 9px;
+          background: rgba(212, 182, 123, 0.13);
+        }
+        #e2-ghost {
+          position: absolute;
+          left: 0;
+          top: 1440px;
+          font-weight: 900;
+          font-size: 330px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+          color: rgba(212, 182, 123, 0.09);
+        }
+        #e2-stack {
+          position: absolute;
+          inset: 0;
+        }
+        .e2-linha {
+          position: absolute;
+          left: 0;
+          width: 1080px;
+          text-align: center;
+          font-weight: 900;
+          line-height: 1;
+          letter-spacing: -0.035em;
+          white-space: nowrap;
+        }
+        #e2-l1 {
+          top: 440px;
+          font-size: 104px;
+          color: #ffffff;
+        }
+        #e2-l1-ouro {
+          top: 880px;
+          font-size: 150px;
+          color: #012c47;
+        }
+        #e2-l2 {
+          top: 565px;
+          font-size: 172px;
+          color: #d4b67b;
+        }
+        #e2-l3 {
+          top: 765px;
+          font-size: 108px;
+          color: #ffffff;
+        }
+        #e2-l4 {
+          top: 890px;
+          font-size: 100px;
+          color: #ffffff;
+        }
+        #e2-sublinha {
+          position: absolute;
+          left: 240px;
+          top: 1018px;
+          width: 600px;
+          height: 14px;
+          background: #d4b67b;
+          clip-path: polygon(9px 0, 600px 0, 591px 14px, 0 14px);
+        }
+        #e2-l5 {
+          top: 1075px;
+          font-size: 66px;
+          letter-spacing: -0.02em;
+          color: #ffffff;
+        }
+        #e2-l6 {
+          top: 1155px;
+          font-size: 66px;
+          letter-spacing: -0.02em;
+          color: #d4b67b;
+        }
+        #e2-pill {
+          position: absolute;
+          left: 0;
+          top: 1310px;
+          width: 1080px;
+          display: flex;
+          justify-content: center;
+        }
+        #e2-pill-in {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 20px 38px;
+          border-radius: 999px;
+          background: #d4b67b;
+          color: #012c47;
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 36px;
+          letter-spacing: 0.14em;
+          white-space: nowrap;
+        }
+        #e2-rec {
+          display: block;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #012c47;
+        }
+      </style>
+
+      <div id="root" data-composition-id="e2-manifesto" data-width="1080" data-height="1920">
+        <div id="e2-glow"></div>
+        <div id="e2-onda" aria-hidden="true" data-layout-ignore></div>
+        <div id="e2-ghost" aria-hidden="true" data-layout-ignore>PODCAST PODCAST</div>
+        <!-- Título real da página /podcast (client/src/pages/Podcast.tsx) -->
+        <div id="e2-stack">
+          <div class="e2-linha" id="e2-l1">O ÚNICO</div>
+          <div class="e2-linha" id="e2-l2">ESTÚDIO</div>
+          <div class="e2-linha" id="e2-l3">DE PODCAST</div>
+          <div class="e2-linha" id="e2-l4">PROFISSIONAL</div>
+          <div id="e2-sublinha"></div>
+          <div class="e2-linha" id="e2-l5">EM UMA AGÊNCIA</div>
+          <div class="e2-linha" id="e2-l6">DE MARKETING</div>
+          <div id="e2-pill">
+            <div id="e2-pill-in"><span id="e2-rec"></span>EXCLUSIVIDADE EM CATANDUVA</div>
+          </div>
+        </div>
+        <div id="e2-ouro"></div>
+        <div class="e2-linha" id="e2-l1-ouro">O ÚNICO</div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 3.75;
+          const F = 1 / 30;
+          const tl = gsap.timeline({ paused: true });
+
+          // Onda de fundo: alturas determinísticas, pulso em cada beat.
+          const onda = document.getElementById("e2-onda");
+          const NB = 32;
+          for (let i = 0; i < NB; i++) {
+            const b = document.createElement("span");
+            b.className = "e2-barra";
+            b.id = "e2-b" + i;
+            onda.appendChild(b);
+          }
+          for (let i = 0; i < NB; i++) {
+            const base = 0.12 + 0.3 * Math.abs(Math.sin(i * 0.47) * Math.cos(i * 0.19));
+            for (let k = 0; k < 8; k++) {
+              const peak = Math.min(1, base + 0.6 * Math.abs(Math.sin(i * 0.9 + k * 1.7)));
+              tl.fromTo("#e2-b" + i, { scaleY: peak }, { scaleY: base, duration: B, ease: "power2.out", immediateRender: k === 0 }, k * B);
+            }
+          }
+
+          // Ambiente
+          tl.fromTo("#e2-ghost", { x: 60 }, { x: -760, duration: D, ease: "none" }, 0);
+          tl.fromTo("#e2-glow", { scale: 0.92 }, { scale: 1.1, duration: D, ease: "sine.inOut" }, 0);
+          tl.fromTo("#e2-stack", { scale: 1 }, { scale: 1.04, duration: D, ease: "none", transformOrigin: "50% 50%" }, 0);
+
+          // b0 — fundo dourado; "O ÚNICO" bate em navy (headline-slam).
+          tl.fromTo("#e2-l1-ouro", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "expo.out" }, 0);
+          tl.to("#e2-l1-ouro", { x: 10, y: -6, duration: F }, 0.24);
+          tl.to("#e2-l1-ouro", { x: -7, y: 4, duration: F }, 0.24 + F);
+          tl.to("#e2-l1-ouro", { x: 0, y: 0, duration: F }, 0.24 + 2 * F);
+          tl.set(["#e2-l1", "#e2-l2", "#e2-l3", "#e2-l4", "#e2-sublinha", "#e2-l5", "#e2-l6", "#e2-pill"], { opacity: 0 }, 0);
+          tl.set("#e2-onda", { opacity: 0 }, 0);
+
+          // b1 — corte seco para navy; "O ÚNICO" sobe; "ESTÚDIO" estoura.
+          tl.set(["#e2-ouro", "#e2-l1-ouro"], { opacity: 0 }, B);
+          tl.set("#e2-onda", { opacity: 1 }, B);
+          tl.fromTo("#e2-l1", { opacity: 1, y: 440, scale: 1.44 }, { y: 0, scale: 1, duration: 0.24, ease: "power4.out", immediateRender: false }, B);
+          tl.fromTo(
+            "#e2-l2",
+            { opacity: 0, scale: 2.3, filter: "blur(14px)" },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out", immediateRender: false },
+            B,
+          );
+          tl.to("#e2-stack", { x: 16, y: -10, duration: F }, B + 0.26);
+          tl.to("#e2-stack", { x: -11, y: 7, duration: F }, B + 0.26 + F);
+          tl.to("#e2-stack", { x: 0, y: 0, duration: F }, B + 0.26 + 2 * F);
+
+          // b2 — "DE PODCAST" entra lateral.
+          tl.fromTo("#e2-l3", { opacity: 0, x: -800 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, 2 * B);
+          // b3 — "PROFISSIONAL" sobe girando + sublinhado desenha.
+          tl.fromTo("#e2-l4", { opacity: 0, y: 220, rotation: 6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.36, ease: "back.out(1.5)", immediateRender: false }, 3 * B);
+          tl.fromTo("#e2-sublinha", { opacity: 1, scaleX: 0, transformOrigin: "0% 50%" }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "power4.out", immediateRender: false }, 3 * B + 0.12);
+          // b4 / b4.5 — "EM UMA AGÊNCIA" / "DE MARKETING".
+          tl.fromTo("#e2-l5", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.26, ease: "power3.out", immediateRender: false }, 4 * B);
+          tl.fromTo("#e2-l6", { opacity: 0, x: 600 }, { opacity: 1, x: 0, duration: 0.28, ease: "expo.out", immediateRender: false }, 4.5 * B);
+          // b5 — selo real "EXCLUSIVIDADE EM CATANDUVA".
+          tl.fromTo("#e2-pill", { opacity: 0, y: 60, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 5 * B);
+          // b6 — "ESTÚDIO" pulsa; ponto do selo pisca no beat.
+          tl.fromTo("#e2-l2", { scale: 1 }, { scale: 1.06, duration: 0.09, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 6 * B);
+          for (let k = 5; k < 8; k++) {
+            tl.fromTo("#e2-rec", { opacity: 1 }, { opacity: 0.25, duration: B * 0.5, ease: "steps(1)", immediateRender: false }, k * B);
+            tl.set("#e2-rec", { opacity: 1 }, k * B + B * 0.5);
+          }
+
+          // Saída: a lâmina dourada da camada de transições assume o corte em 3,75.
+          tl.to(["#e2-l1", "#e2-l2", "#e2-l3", "#e2-l4"], { y: -140, opacity: 0, duration: 0.2, ease: "power4.in", stagger: 0.02 }, 3.5);
+          tl.to(["#e2-sublinha", "#e2-l5", "#e2-l6", "#e2-pill"], { y: -140, opacity: 0, duration: 0.2, ease: "power4.in", stagger: 0.02 }, 3.53);
+
+          window.__timelines["e2-manifesto"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

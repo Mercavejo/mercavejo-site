@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E5 — O Poder dos Cortes (cortes reais gravados no estúdio)</title>
+  </head>
+  <body>
+    <template id="e5-cortes-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0a192f;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #e5-glow {
+          position: absolute;
+          left: -320px;
+          top: 260px;
+          width: 1720px;
+          height: 1400px;
+          background: radial-gradient(circle at 50% 45%, rgba(15, 58, 125, 0.9) 0%, rgba(10, 25, 47, 0) 64%);
+        }
+        #e5-ghost {
+          position: absolute;
+          left: 0;
+          top: 1600px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 300px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+          color: rgba(212, 182, 123, 0.08);
+        }
+        #e5-titulo {
+          position: absolute;
+          left: 0;
+          top: 236px;
+          width: 1080px;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 104px;
+          line-height: 1;
+          letter-spacing: -0.035em;
+          white-space: nowrap;
+        }
+        .e5-tl {
+          display: block;
+        }
+        #e5-tl2 {
+          color: #d4b67b;
+        }
+        /* Celulares */
+        .e5-fone {
+          position: absolute;
+          top: 470px;
+          width: 340px;
+          height: 604px;
+          border-radius: 46px;
+          border: 10px solid #0d1b2e;
+          outline: 3px solid rgba(212, 182, 123, 0.75);
+          overflow: hidden;
+          background: #000000;
+          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
+        }
+        #e5-fone1 {
+          left: 150px;
+        }
+        #e5-fone2 {
+          left: 590px;
+        }
+        .e5-video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 320px;
+          height: 584px;
+          object-fit: cover;
+        }
+        .e5-tag {
+          position: absolute;
+          top: 1100px;
+          padding: 12px 22px;
+          border-radius: 999px;
+          background: #d4b67b;
+          color: #012c47;
+          font-weight: 700;
+          font-size: 34px;
+          white-space: nowrap;
+        }
+        #e5-tag1 {
+          left: 160px;
+        }
+        #e5-tag2 {
+          left: 620px;
+        }
+        /* Frase real: "Um episódio de 1 hora pode gerar até 10 vídeos curtos de alto impacto." */
+        #e5-ep {
+          position: absolute;
+          left: 0;
+          top: 1200px;
+          width: 1080px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 40px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.9);
+          white-space: nowrap;
+        }
+        #e5-conta {
+          position: absolute;
+          left: 0;
+          top: 1252px;
+          width: 1080px;
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          gap: 26px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          color: #d4b67b;
+          white-space: nowrap;
+        }
+        #e5-ate {
+          font-size: 96px;
+          letter-spacing: -0.03em;
+        }
+        #e5-num {
+          display: block;
+          width: 250px;
+          text-align: left;
+          font-size: 190px;
+          line-height: 1;
+          letter-spacing: -0.05em;
+        }
+        #e5-videos {
+          position: absolute;
+          left: 0;
+          top: 1468px;
+          width: 1080px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 44px;
+          color: #ffffff;
+          white-space: nowrap;
+        }
+      </style>
+
+      <div id="root" data-composition-id="e5-cortes" data-width="1080" data-height="1920">
+        <div id="e5-glow"></div>
+        <div id="e5-ghost" aria-hidden="true" data-layout-ignore>CORTES CORTES</div>
+        <div id="e5-titulo"><span class="e5-tl" id="e5-tl1">O Poder</span><span class="e5-tl" id="e5-tl2">dos Cortes</span></div>
+
+        <!-- Trechos de client/public/images/corte1.mp4 e corte2.mp4 (página /podcast), sem áudio. -->
+        <div class="e5-fone" id="e5-fone1">
+          <video
+            id="e5-v1"
+            class="e5-video"
+            src="../assets/video/corte1-trecho.mp4"
+            muted
+            playsinline
+            data-start="0"
+            data-duration="3.75"
+            data-track-index="2"
+          ></video>
+        </div>
+        <div class="e5-fone" id="e5-fone2">
+          <video
+            id="e5-v2"
+            class="e5-video"
+            src="../assets/video/corte2-trecho.mp4"
+            muted
+            playsinline
+            data-start="0"
+            data-duration="3.75"
+            data-track-index="3"
+          ></video>
+        </div>
+        <div class="e5-tag" id="e5-tag1">Reels/TikTok</div>
+        <div class="e5-tag" id="e5-tag2">YouTube Shorts</div>
+
+        <div id="e5-ep">1 EPISÓDIO DE 1 HORA PODE GERAR</div>
+        <div id="e5-conta"><span id="e5-ate">ATÉ</span><span id="e5-num">1</span></div>
+        <div id="e5-videos">vídeos curtos de alto impacto</div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 3.75;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#e5-glow", { scale: 0.9 }, { scale: 1.12, duration: D, ease: "sine.inOut" }, 0);
+          tl.fromTo("#e5-ghost", { x: 0 }, { x: -700, duration: D, ease: "none" }, 0);
+
+          // Título
+          tl.fromTo("#e5-tl1", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0.04);
+          tl.fromTo("#e5-tl2", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.32, ease: "expo.out" }, 0.12);
+
+          // Celulares sobem com mola, inclinados em sentidos opostos (split-tilt).
+          tl.fromTo("#e5-fone1", { y: 1100, rotation: -16 }, { y: 0, rotation: -5, duration: 0.5, ease: "back.out(1.3)" }, 0);
+          tl.fromTo("#e5-fone2", { y: 1100, rotation: 16 }, { y: 30, rotation: 5, duration: 0.5, ease: "back.out(1.3)" }, B);
+          // respiração leve no resto da cena
+          tl.to("#e5-fone1", { y: -14, duration: D - 0.6, ease: "sine.inOut" }, 0.55);
+          tl.to("#e5-fone2", { y: 44, duration: D - 0.6 - B, ease: "sine.inOut" }, 0.55 + B);
+          tl.fromTo("#e5-tag1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 0.5);
+          tl.fromTo("#e5-tag2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 0.5 + B);
+
+          // Contagem 1 → 10 (dynamic-content: valor é função pura do tempo do timeline).
+          const numEl = document.getElementById("e5-num");
+          const cont = { v: 1 };
+          const escreve = function () {
+            numEl.textContent = String(Math.max(1, Math.min(10, Math.round(cont.v))));
+          };
+          escreve();
+          tl.fromTo("#e5-ep", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.26, ease: "power3.out" }, 2 * B);
+          tl.fromTo("#e5-conta", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, 2 * B);
+          tl.fromTo(cont, { v: 1 }, { v: 10, duration: 3 * B, ease: "power2.in", onUpdate: escreve, immediateRender: false }, 2 * B + 0.05);
+          // batida no 10 (beat 5)
+          tl.fromTo("#e5-num", { scale: 1 }, { scale: 1.18, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "30% 60%", immediateRender: false }, 5 * B + 0.05);
+          tl.fromTo("#e5-videos", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 5 * B);
+
+          window.__timelines["e5-cortes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

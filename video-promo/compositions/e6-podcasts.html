@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E6 — Podcasts de Sucesso (gravados no Estúdio Mercavejo)</title>
+  </head>
+  <body>
+    <template id="e6-podcasts-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #012c47;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #e6-foto {
+          position: absolute;
+          left: -180px;
+          top: 0;
+          width: 1440px;
+          height: 1920px;
+          object-fit: cover;
+          opacity: 0.16;
+          filter: blur(6px);
+        }
+        #e6-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 90% 60% at 50% 50%, rgba(1, 44, 71, 0.55) 0%, rgba(1, 44, 71, 0.92) 75%);
+        }
+        #e6-kicker {
+          position: absolute;
+          left: 80px;
+          top: 240px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          font-weight: 700;
+          font-size: 36px;
+          letter-spacing: 0.18em;
+          color: #d4b67b;
+          white-space: nowrap;
+        }
+        #e6-mic {
+          display: block;
+          width: 44px;
+          height: 44px;
+          overflow: visible;
+        }
+        #e6-mic * {
+          fill: none;
+          stroke: #d4b67b;
+          stroke-width: 9;
+          stroke-linecap: round;
+        }
+        #e6-titulo {
+          position: absolute;
+          left: 80px;
+          top: 300px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 116px;
+          line-height: 1.02;
+          letter-spacing: -0.035em;
+          white-space: nowrap;
+        }
+        .e6-tl {
+          display: block;
+        }
+        #e6-tl2 {
+          color: #d4b67b;
+        }
+        .e6-linha {
+          position: absolute;
+          left: 80px;
+          width: 920px;
+          height: 132px;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          border-bottom: 3px solid rgba(212, 182, 123, 0.35);
+        }
+        .e6-idx {
+          position: relative;
+          display: block;
+          width: 70px;
+          font-weight: 700;
+          font-size: 38px;
+          color: #d4b67b;
+        }
+        .e6-nome {
+          position: relative;
+          display: block;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 74px;
+          letter-spacing: -0.03em;
+          white-space: nowrap;
+        }
+        .e6-onair {
+          position: absolute;
+          left: -80px;
+          top: 0;
+          width: 1080px;
+          height: 132px;
+          background: #d4b67b;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="root" data-composition-id="e6-podcasts" data-width="1080" data-height="1920">
+        <img id="e6-foto" src="../assets/img/estudio.webp" alt="" aria-hidden="true" />
+        <div id="e6-glow"></div>
+
+        <div id="e6-kicker">
+          <svg id="e6-mic" viewBox="0 0 120 120" aria-hidden="true">
+            <rect x="42" y="8" width="36" height="62" rx="18" />
+            <path d="M26 52 a34 34 0 0 0 68 0" />
+            <line x1="60" y1="86" x2="60" y2="108" />
+          </svg>
+          ESTÚDIO MERCAVEJO
+        </div>
+        <div id="e6-titulo"><span class="e6-tl" id="e6-tl1">Podcasts</span><span class="e6-tl" id="e6-tl2">de Sucesso</span></div>
+
+        <!-- Lista real: client/src/components/Studio.tsx ("Podcasts de Sucesso:") -->
+        <div class="e6-linha" id="e6-r1" style="top: 590px"><div class="e6-onair"></div><span class="e6-idx">01</span><span class="e6-nome">Treina que sara</span></div>
+        <div class="e6-linha" id="e6-r2" style="top: 732px"><div class="e6-onair"></div><span class="e6-idx">02</span><span class="e6-nome">Antes da consulta</span></div>
+        <div class="e6-linha" id="e6-r3" style="top: 874px"><div class="e6-onair"></div><span class="e6-idx">03</span><span class="e6-nome">Café com Zakia</span></div>
+        <div class="e6-linha" id="e6-r4" style="top: 1016px"><div class="e6-onair"></div><span class="e6-idx">04</span><span class="e6-nome">Sai do raso</span></div>
+        <div class="e6-linha" id="e6-r5" style="top: 1158px"><div class="e6-onair"></div><span class="e6-idx">05</span><span class="e6-nome">Gente amiga</span></div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 3.75;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#e6-foto", { scale: 1.15 }, { scale: 1.02, duration: D, ease: "power1.out" }, 0);
+          tl.fromTo("#e6-kicker", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.28, ease: "expo.out" }, 0);
+          tl.fromTo("#e6-tl1", { opacity: 0, x: -200 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.04);
+          tl.fromTo("#e6-tl2", { opacity: 0, x: 300 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.12);
+
+          // Um podcast por meio beat a partir do b1 (b1 … b3), entradas alternadas.
+          for (let i = 0; i < 5; i++) {
+            const row = "#e6-r" + (i + 1);
+            const t = B + i * (B / 2);
+            const dir = i % 2 === 0 ? -1 : 1;
+            tl.fromTo(row, { opacity: 0, x: dir * 400 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, t);
+            tl.fromTo(row + " .e6-idx", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2.5)" }, t + 0.06);
+          }
+          // b5 em diante: "no ar" — faixa dourada percorre a lista, linha por linha (texto vira navy).
+          for (let i = 0; i < 5; i++) {
+            const row = "#e6-r" + (i + 1);
+            const t = 5 * B + i * 0.12;
+            tl.fromTo(row + " .e6-onair", { opacity: 0, scaleX: 0, transformOrigin: "0% 50%" }, { opacity: 1, scaleX: 1, duration: 0.14, ease: "power3.out" }, t);
+            tl.fromTo(row + " .e6-nome", { color: "#ffffff" }, { color: "#012c47", duration: 0.08, immediateRender: false }, t + 0.04);
+            tl.fromTo(row + " .e6-idx", { color: "#d4b67b" }, { color: "#012c47", duration: 0.08, immediateRender: false }, t + 0.04);
+            tl.to(row + " .e6-onair", { opacity: 0, duration: 0.16, ease: "power2.in" }, t + 0.3);
+            tl.to(row + " .e6-nome", { color: "#ffffff", duration: 0.12 }, t + 0.32);
+            tl.to(row + " .e6-idx", { color: "#d4b67b", duration: 0.12 }, t + 0.32);
+          }
+          // Saída rápida antes do corte (lâmina assume em 3,75).
+          tl.to(["#e6-r1", "#e6-r2", "#e6-r3", "#e6-r4", "#e6-r5"], { x: -160, opacity: 0, duration: 0.2, ease: "power4.in", stagger: 0.025 }, D - 0.3);
+
+          window.__timelines["e6-podcasts"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

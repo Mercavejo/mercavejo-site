@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E7 — Produção Completa: do roteiro à publicação final</title>
+  </head>
+  <body>
+    <template id="e7-producao-template">
+      <style>
+        @font-face {
+          font-family: "Poppins";
+          font-weight: 900;
+          font-style: normal;
+          src: url("../assets/fonts/poppins-latin-900-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Inter";
+          font-weight: 700;
+          font-style: normal;
+          src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0f3a7d;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        #e7-glow {
+          position: absolute;
+          left: -200px;
+          top: 120px;
+          width: 1600px;
+          height: 1600px;
+          background: radial-gradient(circle at 60% 40%, rgba(212, 182, 123, 0.26) 0%, rgba(15, 58, 125, 0) 60%);
+        }
+        #e7-ghost {
+          position: absolute;
+          left: 0;
+          top: 1560px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 300px;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          white-space: nowrap;
+          color: rgba(255, 255, 255, 0.07);
+        }
+        #e7-pill {
+          position: absolute;
+          left: 80px;
+          top: 240px;
+          padding: 16px 30px;
+          border-radius: 999px;
+          background: #d4b67b;
+          color: #012c47;
+          font-weight: 700;
+          font-size: 38px;
+          letter-spacing: 0.14em;
+          white-space: nowrap;
+        }
+        /* Descrição real do pacote: "Nós cuidamos de tudo, do roteiro à publicação final." */
+        #e7-head {
+          position: absolute;
+          left: 80px;
+          top: 340px;
+          width: 920px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 900;
+          font-size: 78px;
+          line-height: 1.04;
+          letter-spacing: -0.035em;
+        }
+        .e7-h {
+          display: block;
+          white-space: nowrap;
+        }
+        #e7-h2,
+        #e7-h3 {
+          font-size: 78px;
+        }
+        #e7-h3 {
+          color: #d4b67b;
+        }
+        #e7-trilho {
+          position: absolute;
+          left: 113px;
+          top: 760px;
+          width: 6px;
+          height: 690px;
+          background: rgba(212, 182, 123, 0.5);
+        }
+        .e7-item {
+          position: absolute;
+          left: 80px;
+          width: 920px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+        }
+        .e7-check {
+          position: relative;
+          display: block;
+          width: 72px;
+          height: 72px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: #d4b67b;
+        }
+        .e7-check svg {
+          position: absolute;
+          left: 14px;
+          top: 14px;
+          width: 44px;
+          height: 44px;
+          overflow: visible;
+        }
+        .e7-check path {
+          fill: none;
+          stroke: #012c47;
+          stroke-width: 12;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .e7-txt {
+          display: block;
+          font-weight: 700;
+          font-size: 42px;
+          white-space: nowrap;
+        }
+      </style>
+
+      <div id="root" data-composition-id="e7-producao" data-width="1080" data-height="1920">
+        <div id="e7-glow"></div>
+        <div id="e7-ghost" aria-hidden="true" data-layout-ignore>PRODUÇÃO PRODUÇÃO</div>
+
+        <!-- Pacote real "Produção Completa" (client/src/pages/Podcast.tsx) -->
+        <div id="e7-pill">PRODUÇÃO COMPLETA</div>
+        <div id="e7-head">
+          <span class="e7-h" id="e7-h1">Nós cuidamos de tudo,</span>
+          <span class="e7-h" id="e7-h2">do roteiro à</span>
+          <span class="e7-h" id="e7-h3">publicação final.</span>
+        </div>
+        <div id="e7-trilho"></div>
+
+        <div class="e7-item" id="e7-i1" style="top: 760px">
+          <span class="e7-check"><svg viewBox="0 0 44 44"><path pathLength="1" d="M6 23 L17 34 L38 10" /></svg></span>
+          <span class="e7-txt">Edição completa do episódio</span>
+        </div>
+        <div class="e7-item" id="e7-i2" style="top: 900px">
+          <span class="e7-check"><svg viewBox="0 0 44 44"><path pathLength="1" d="M6 23 L17 34 L38 10" /></svg></span>
+          <span class="e7-txt">Tratamento de áudio e cor</span>
+        </div>
+        <div class="e7-item" id="e7-i3" style="top: 1040px">
+          <span class="e7-check"><svg viewBox="0 0 44 44"><path pathLength="1" d="M6 23 L17 34 L38 10" /></svg></span>
+          <span class="e7-txt">Criação de capas (thumbnails)</span>
+        </div>
+        <div class="e7-item" id="e7-i4" style="top: 1180px">
+          <span class="e7-check"><svg viewBox="0 0 44 44"><path pathLength="1" d="M6 23 L17 34 L38 10" /></svg></span>
+          <span class="e7-txt">Publicação em todas as plataformas</span>
+        </div>
+        <div class="e7-item" id="e7-i5" style="top: 1320px">
+          <span class="e7-check"><svg viewBox="0 0 44 44"><path pathLength="1" d="M6 23 L17 34 L38 10" /></svg></span>
+          <span class="e7-txt">Suporte estratégico de pauta</span>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const B = 60 / 128;
+          const D = 3.75;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#e7-glow", { scale: 0.9, rotation: 0 }, { scale: 1.12, rotation: 12, duration: D, ease: "sine.inOut" }, 0);
+          tl.fromTo("#e7-ghost", { x: 0 }, { x: -720, duration: D, ease: "none" }, 0);
+
+          tl.fromTo("#e7-pill", { opacity: 0, scale: 0.6, x: -40 }, { opacity: 1, scale: 1, x: 0, duration: 0.32, ease: "back.out(2)" }, 0);
+          tl.fromTo("#e7-h1", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 0.08);
+          tl.fromTo("#e7-h2", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, B);
+          tl.fromTo("#e7-h3", { opacity: 0, x: 400 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, B + 0.12);
+
+          // Trilho desce e cada item "marca" no beat (b2 … b6).
+          tl.fromTo("#e7-trilho", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 4 * B, ease: "none" }, 2 * B);
+          for (let i = 0; i < 5; i++) {
+            const it = "#e7-i" + (i + 1);
+            const t = (2 + i) * B;
+            tl.fromTo(it + " .e7-check", { scale: 0 }, { scale: 1, duration: 0.26, ease: "back.out(2.6)" }, t);
+            tl.fromTo(
+              it + " .e7-check path",
+              { strokeDashoffset: 1, strokeDasharray: 1 },
+              { strokeDashoffset: 0, strokeDasharray: 1, duration: 0.22, ease: "power2.out" },
+              t + 0.1,
+            );
+            tl.fromTo(it + " .e7-txt", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.26, ease: "power3.out" }, t + 0.04);
+          }
+          // Virada (b7): lista inteira dá um "punch" com a caixa da trilha e sai no corte.
+          tl.to(["#e7-i1", "#e7-i2", "#e7-i3", "#e7-i4", "#e7-i5"], { x: 18, duration: 0.06, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.03 }, 7 * B);
+          tl.to(["#e7-head", "#e7-pill"], { y: -120, opacity: 0, duration: 0.22, ease: "power4.in", stagger: 0.03 }, D - 0.28);
+
+          window.__timelines["e7-producao"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

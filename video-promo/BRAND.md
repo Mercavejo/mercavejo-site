@@ -102,3 +102,27 @@ Além disso, há o **Estúdio de Podcast** (`Studio.tsx`, `pages/Podcast.tsx`), 
 | E-mail | clubemercavejo@gmail.com | `Footer.tsx`, JSON-LD |
 | Instagram | instagram.com/mercavejo_consultoria | `Footer.tsx`, JSON-LD `sameAs` |
 | Facebook | facebook.com/mercavejobrasilmarketing | `Footer.tsx`, JSON-LD `sameAs` |
+
+## 9. Estúdio de gravação (levantamento extra para a versão de 30 s)
+
+Fonte principal: a página `/podcast` (`client/src/pages/Podcast.tsx`), além de `client/src/components/Studio.tsx`.
+
+| Item (texto exato) | Onde |
+| --- | --- |
+| "EXCLUSIVIDADE EM CATANDUVA" | `Podcast.tsx` (selo) e `Studio.tsx` |
+| "O Único Estúdio de Podcast Profissional em uma Agência de Marketing" | `Podcast.tsx`, H1 |
+| "Somos a única agência em Catanduva com estúdio próprio focado em transformar conversas em autoridade e vendas." | `Podcast.tsx` |
+| "Hub de Conteúdo" | `Studio.tsx` |
+| "Por que gravar no Estúdio Mercavejo?" | `Podcast.tsx` |
+| "Áudio Cristalino": "Microfones de padrão internacional para uma experiência auditiva impecável." | `Podcast.tsx` |
+| "Vídeo em 4K": "Múltiplas câmeras capturando cada ângulo com qualidade de cinema." | `Podcast.tsx` |
+| "Foco em Cortes": "Gravamos pensando nos Reels e TikToks que vão viralizar seu conteúdo." | `Podcast.tsx` |
+| "O Poder dos Cortes": "Um episódio de 1 hora pode gerar até 10 vídeos curtos de alto impacto." | `Podcast.tsx` |
+| Formatos dos cortes: "Reels/TikTok", "YouTube Shorts", "Instagram" | `Podcast.tsx` (`Corte Estratégico 1–3`) |
+| Pacote "Locação de Estúdio" (R$ 400): "Cenário e iluminação profissional", "Até 4 microfones Shure/Rode", "Técnico de áudio acompanhando", "Gravação de vídeo em 4K", "Entrega dos arquivos brutos" | `Podcast.tsx` |
+| Pacote "Produção Completa" (Sob Consulta): "Nós cuidamos de tudo, do roteiro à publicação final." + "Edição completa do episódio", "Tratamento de áudio e cor", "Criação de capas (thumbnails)", "Publicação em todas as plataformas", "Suporte estratégico de pauta" | `Podcast.tsx` |
+| CTA "Reservar meu Horário" | `Podcast.tsx` |
+| Podcasts de Sucesso: Treina que sara, Antes da consulta, Café com Zakia, Sai do raso, Gente amiga | `Studio.tsx` |
+| Vídeos reais de cortes (9:16, 1440×2560): `corte1.mp4` (56 s), `corte2.mp4` (38 s) | `client/public/images/`, usados na seção "O Poder dos Cortes" |
+| Foto do estúdio | `client/public/images/Estúdio.webp` |
+
