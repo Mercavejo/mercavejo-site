@@ -29,16 +29,24 @@ export default function Studio() {
               </p>
               <div className="grid grid-cols-1 gap-3">
                 {[
-                  "Treina que sara",
-                  "Antes da consulta",
-                  "Café com Zakia",
-                  "Sai do raso",
-                  "Gente amiga"
+                  { name: "Treina que Sara", href: "https://www.instagram.com/treinaquesara/" },
+                  { name: "Antes da consulta", href: "https://www.instagram.com/podcastantesdaconsulta/" },
+                  { name: "Café com Zakia", href: "https://www.instagram.com/cafecomzakia/" },
+                  { name: "Sai do raso", href: "https://www.instagram.com/lamanna_psicologa/" },
+                  { name: "Gente amiga", href: "https://www.instagram.com/podcastgenteamiga/" },
+                  { name: "Entre Mães no Espectro", href: "https://www.instagram.com/entremaesnoespectro/" },
+                  { name: "Consert Cast", href: "https://www.instagram.com/consertcast/" }
                 ].map((podcast) => (
-                  <div key={podcast} className="flex items-center gap-3 text-white/80 group">
+                  <a
+                    key={podcast.name}
+                    href={podcast.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-white/80 group hover:text-[#d4b67b] transition-colors"
+                  >
                     <Star className="w-4 h-4 text-[#d4b67b] fill-[#d4b67b]/20 group-hover:fill-[#d4b67b] transition-all" />
-                    <span className="text-sm font-medium">{podcast}</span>
-                  </div>
+                    <span className="text-sm font-medium underline-offset-4 group-hover:underline">{podcast.name}</span>
+                  </a>
                 ))}
               </div>
             </div>

@@ -168,8 +168,8 @@ export default function Contact() {
                         </div>
                         <div className="min-w-0">
                           <div className="text-xs font-bold text-[#d4b67b] uppercase tracking-widest mb-1">Email</div>
-                          <a href="mailto:clubemercavejo@gmail.com" className="text-lg font-medium hover:text-[#d4b67b] transition-colors truncate block">
-                            clubemercavejo@gmail.com
+                          <a href="mailto:contato@mercavejo.com.br" className="text-lg font-medium hover:text-[#d4b67b] transition-colors truncate block">
+                            contato@mercavejo.com.br
                           </a>
                         </div>
                       </div>

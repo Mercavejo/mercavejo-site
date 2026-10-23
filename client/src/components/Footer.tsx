@@ -41,7 +41,7 @@ export default function Footer() {
               <ul className="space-y-2 text-sm text-slate-600">
                 <li>Catanduva - SP</li>
                 <li><a className="hover:text-[#0F3A7D] transition-colors" href="tel:+5517996240418">(17) 99624-0418</a></li>
-                <li><a className="hover:text-[#0F3A7D] transition-colors" href="mailto:clubemercavejo@gmail.com">clubemercavejo@gmail.com</a></li>
+                <li><a className="hover:text-[#0F3A7D] transition-colors" href="mailto:contato@mercavejo.com.br">contato@mercavejo.com.br</a></li>
               </ul>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Footer() {
 
             <div className="flex items-center gap-4 pointer-events-auto relative z-10">
               <a
-                href="https://www.instagram.com/mercavejo_consultoria/"
+                href="https://www.instagram.com/mercavejo/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-[#0F3A7D] hover:bg-slate-100 transition-colors"
