@@ -135,7 +135,8 @@ export default function Podcast() {
       <main>
         {/* Hero Section */}
         <section className="relative py-20 bg-[#0F3A7D] text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(212,182,123,0.28),transparent_32%),radial-gradient(circle_at_80%_65%,rgba(64,125,190,0.35),transparent_38%),linear-gradient(135deg,#0F3A7D_0%,#20447D_55%,#0b2b5c_100%)]" />
+          <img src="/images/Estúdio.webp" alt="Estúdio Mercavejo" className="absolute inset-0 h-full w-full object-cover object-center opacity-30" />
+          <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(15,58,125,0.96)_0%,rgba(15,58,125,0.78)_48%,rgba(15,58,125,0.55)_100%)]" />
           <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:42px_42px]" />
           
           <div className="container mx-auto px-4 relative z-10">
