@@ -16,6 +16,10 @@ import {
 } from 'lucide-react';
 import Aurora from '@/components/effects/Aurora';
 
+type ServiceGroup = 'Todos' | 'Estratégia' | 'Conteúdo' | 'Performance' | 'Tecnologia';
+const groupLabels: ServiceGroup[] = ['Todos', 'Estratégia', 'Conteúdo', 'Performance', 'Tecnologia'];
+const groupById: Record<number, Exclude<ServiceGroup, 'Todos'>> = { 1: 'Estratégia', 2: 'Conteúdo', 3: 'Estratégia', 4: 'Conteúdo', 5: 'Conteúdo', 6: 'Estratégia', 7: 'Performance', 8: 'Performance', 9: 'Tecnologia' };
+
 const services = [
   {
     id: 1,
@@ -84,6 +88,8 @@ const services = [
 
 export default function Services() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [activeGroup, setActiveGroup] = useState<ServiceGroup>('Todos');
+  const visibleServices = activeGroup === 'Todos' ? services : services.filter((service) => groupById[service.id] === activeGroup);
 
   return (
     <section id="services" className="relative overflow-hidden bg-[#20447D] py-20 sm:py-28">
@@ -116,8 +122,16 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-14 max-w-4xl">
-          {services.map((service, index) => {
+        <div className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-2 sm:mt-10">
+          {groupLabels.map((group) => (
+            <button key={group} type="button" onClick={() => { setActiveGroup(group); setExpandedId(null); }} aria-pressed={activeGroup === group} className={`min-h-10 rounded-full px-4 text-sm font-semibold transition ${activeGroup === group ? 'bg-[#d4b67b] text-[#0F3A7D]' : 'border border-white/20 text-white/70 hover:border-[#d4b67b]/60 hover:text-white'}`}>
+              {group}
+            </button>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-8 max-w-4xl sm:mt-10">
+          {visibleServices.map((service, index) => {
             const Icon = service.icon;
             const open = expandedId === service.id;
             return (
