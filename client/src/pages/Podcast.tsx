@@ -232,7 +232,7 @@ export default function Podcast() {
         <section className="bg-slate-50 py-20 sm:py-28">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-14 max-w-2xl text-center">
-              <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Do roteiro à publicação</span>
+              <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Da agenda à publicação</span>
               <h2 className="text-3xl font-display text-[#0F3A7D] sm:text-4xl">Um processo pensado para gerar conteúdo</h2>
               <p className="mt-4 text-gray-600">Cada etapa é planejada para transformar uma conversa em um ativo de comunicação para sua marca.</p>
             </div>
@@ -240,10 +240,10 @@ export default function Podcast() {
             <div className="relative mx-auto grid max-w-6xl gap-8 md:grid-cols-5 md:gap-4">
               <div aria-hidden="true" className="absolute left-7 top-8 h-[calc(100%-64px)] w-px bg-[#d4b67b]/50 md:left-0 md:right-0 md:top-8 md:h-px md:w-auto" />
               {[
-                { number: '01', title: 'Pauta', text: 'Definimos o tema, objetivo e convidados.', icon: ClipboardList },
+                { number: '01', title: 'Agenda', text: 'Agendamos o dia e preparamos o estúdio para receber você.', icon: ClipboardList },
                 { number: '02', title: 'Gravação', text: 'Captação de áudio e vídeo no estúdio.', icon: Mic },
-                { number: '03', title: 'Edição', text: 'Tratamento de áudio, cor e ritmo.', icon: Sparkles },
-                { number: '04', title: 'Cortes', text: 'Extraímos os melhores momentos para redes.', icon: Scissors },
+                { number: '03', title: 'Edição personalizada', text: 'Editamos áudio, vídeo e ritmo de acordo com o que você quiser.', icon: Sparkles },
+                { number: '04', title: 'Cortes escolhidos por você', text: 'Você seleciona os melhores momentos que serão transformados em cortes.', icon: Scissors },
                 { number: '05', title: 'Publicação', text: 'Conteúdo pronto para circular e gerar alcance.', icon: Share2 },
               ].map((step, index) => {
                 const Icon = step.icon;
