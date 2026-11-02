@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Podcast from "./pages/Podcast";
 import WhatsAppButton from "./components/WhatsAppButton";
+import SpotlightCursor from "./components/effects/SpotlightCursor";
 
 
 function Router() {
@@ -39,6 +40,7 @@ function App() {
           <Router />
           <Analytics />
           <WhatsAppButton />
+          <SpotlightCursor />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

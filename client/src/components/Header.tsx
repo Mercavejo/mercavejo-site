@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'wouter';
@@ -6,6 +6,15 @@ import { useLocation } from 'wouter';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const [spot, setSpot] = useState<{ x: number; y: number } | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  const handleNavMove = (e: React.MouseEvent) => {
+    const el = navRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setSpot({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   const navLinks = [
     { label: 'Serviços', href: '/#services' },
@@ -53,7 +62,21 @@ export default function Header() {
               />
             </a>
 
-            <nav className="hidden md:flex items-center gap-8">
+            <nav
+              ref={navRef}
+              onMouseMove={handleNavMove}
+              onMouseLeave={() => setSpot(null)}
+              className="relative hidden md:flex items-center gap-8"
+            >
+              {spot && (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background: `radial-gradient(150px circle at ${spot.x}px ${spot.y}px, rgba(212, 182, 123, 0.22), transparent 70%)`,
+                  }}
+                />
+              )}
               {navLinks.map((link) => (
                 <a
                   key={link.label}

@@ -14,6 +14,7 @@ import {
   Plus,
   Minus
 } from 'lucide-react';
+import { handleSpotlightMove, SpotlightOverlay } from '@/components/effects/spotlight';
 
 const services = [
   {
@@ -143,8 +144,9 @@ export default function Services() {
                 >
                   <Card
                     onClick={() => setExpandedId(isExpanded ? null : service.id)}
+                    onMouseMove={handleSpotlightMove}
                     className={[
-                      'relative h-full p-6 sm:p-8 cursor-pointer transition-all duration-500 overflow-hidden',
+                      'group relative h-full p-6 sm:p-8 cursor-pointer transition-all duration-500 overflow-hidden',
                       'bg-white/[0.08] backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]',
                       'hover:bg-white/[0.12] hover:border-white/30 hover:shadow-[0_8px_32px_0_rgba(212,182,123,0.2)]',
                       isFeatured ? 'ring-1 ring-[#d4b67b]/50' : '',
@@ -153,6 +155,9 @@ export default function Services() {
                   >
                     {/* Background Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Mouse-tracking spotlight */}
+                    <SpotlightOverlay />
 
                     <div className="relative z-10">
                       <div className="flex justify-between items-start mb-6">

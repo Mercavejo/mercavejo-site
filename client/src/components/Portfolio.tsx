@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import TiltCard from '@/components/effects/TiltCard';
 
 type PortfolioItem = {
   title: string;
@@ -119,16 +120,16 @@ export default function Portfolio() {
             <div ref={scrollerRef} className="no-scrollbar overflow-x-auto">
               <div className="flex gap-2 py-10 whitespace-nowrap">
                 {corridorItems.map((item, idx) => (
-                  <motion.button
-                    key={`${item.title}-${idx}`}
-                    whileHover={{ scale: 0.98 }}
-                    whileTap={{ scale: 0.95 }}
-                    type="button"
-                    onClick={() => setOpenItem(item)}
-                    className="group relative flex-shrink-0 w-72 md:w-80 aspect-[4/5] overflow-hidden bg-black text-left rounded-2xl shadow-xl"
-                    title={item.title}
-                    aria-label={`Abrir ${item.title}`}
-                  >
+                  <TiltCard key={`${item.title}-${idx}`} className="flex-shrink-0" max={8}>
+                    <motion.button
+                      whileHover={{ scale: 0.98 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="button"
+                      onClick={() => setOpenItem(item)}
+                      className="group relative w-72 md:w-80 aspect-[4/5] overflow-hidden bg-black text-left rounded-2xl shadow-xl"
+                      title={item.title}
+                      aria-label={`Abrir ${item.title}`}
+                    >
                     <img
                       src={item.image}
                       alt={item.title}
@@ -147,7 +148,8 @@ export default function Portfolio() {
                     <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute -inset-10 bg-gradient-to-r from-transparent via-white/18 to-transparent rotate-12" />
                     </div>
-                  </motion.button>
+                    </motion.button>
+                  </TiltCard>
                 ))}
               </div>
             </div>
