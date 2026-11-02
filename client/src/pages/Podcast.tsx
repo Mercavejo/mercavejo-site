@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const podcastPackages = [
   {
     name: "Locação de Estúdio",
-    price: "R$ 400",
+    price: "R$ 500",
     unit: "/hora",
     description: "Ideal para quem já tem sua equipe de edição e busca um espaço profissional.",
     features: [
