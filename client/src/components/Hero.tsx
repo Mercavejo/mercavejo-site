@@ -56,7 +56,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100svh-80px)] overflow-hidden bg-white py-24 sm:h-screen sm:min-h-[600px] sm:py-0">
+    <section className="relative h-auto min-h-0 overflow-hidden bg-white py-20 sm:h-screen sm:min-h-[600px] sm:py-0">
       <style>{`@keyframes hero-float { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .55; } 88% { opacity: .55; } 100% { transform: translateY(-100vh); opacity: 0; } }`}</style>
       <Aurora colors={['#20447D', '#d4b67b', '#0F3A7D']} intensity={0.65} speed={0.8} className="z-0" />
 
@@ -89,7 +89,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-[calc(100svh-80px)] items-center sm:h-full sm:min-h-0">
+      <div className="relative z-10 flex min-h-0 items-center sm:h-full sm:min-h-0">
         <div className="container mx-auto px-5 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <motion.div {...fadeUp(0)} className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-4 py-2 backdrop-blur-sm">
