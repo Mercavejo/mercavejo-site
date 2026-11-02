@@ -1,7 +1,18 @@
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Aurora from '@/components/effects/Aurora';
+
+const rotatingWords = ['Marketing', 'Tráfego', 'Design', 'Podcast'];
+
+const particles = Array.from({ length: 18 }, (_, i) => ({
+  left: (i * 53 + 11) % 100,
+  size: 2 + (i % 3),
+  duration: 9 + (i % 5) * 2,
+  delay: -(i * 0.9),
+  color: i % 3 === 0 ? '#d4b67b' : i % 3 === 1 ? '#20447D' : '#9db8dd',
+}));
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -9,23 +20,70 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
+function RotatingWord() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((p) => (p + 1) % rotatingWords.length), 2600);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="relative inline-block">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={rotatingWords[index]}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="inline-block bg-gradient-to-r from-[#d4b67b] via-amber-400 to-[#c9a36a] bg-clip-text text-transparent"
+        >
+          {rotatingWords[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
 export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden bg-white">
-      {/* Animated aurora blobs (tech backdrop) */}
-      <Aurora
-        className="z-0"
-        colors={['#20447D', '#d4b67b', '#0F3A7D']}
-        intensity={0.7}
-        speed={1}
-      />
+      <style>{`
+        @keyframes hero-float {
+          0% { transform: translateY(0); opacity: 0; }
+          12% { opacity: 0.6; }
+          88% { opacity: 0.6; }
+          100% { transform: translateY(-100vh); opacity: 0; }
+        }
+      `}</style>
 
-      {/* Dot grid with radial mask */}
+      {/* Fundo animado: aurora */}
+      <Aurora colors={['#20447D', '#d4b67b', '#0F3A7D']} intensity={0.8} speed={1.1} className="z-0" />
+
+      {/* Partículas flutuantes */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {particles.map((p, i) => (
+          <span
+            key={i}
+            className="absolute bottom-[-10px] rounded-full"
+            style={{
+              left: `${p.left}%`,
+              width: p.size,
+              height: p.size,
+              background: p.color,
+              animation: `hero-float ${p.duration}s linear ${p.delay}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grid de pontos */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 opacity-40"
+        className="pointer-events-none absolute inset-0 z-0 opacity-30"
         style={{
-          backgroundImage: 'radial-gradient(rgba(15, 58, 125, 0.28) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(15, 58, 125, 0.25) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
           maskImage: 'radial-gradient(ellipse 75% 75% at 30% 40%, black 15%, transparent 78%)',
           WebkitMaskImage:
@@ -33,16 +91,10 @@ export default function Hero() {
         }}
       />
 
-      {/* Brand image (subtle, over the aurora) */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/images/hero-ai-clean.jpg')] bg-cover bg-center opacity-25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/30" />
-      </div>
-
-      {/* Sweeping beam */}
+      {/* Beam dourado */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 z-0 w-48 rotate-[-20deg] bg-gradient-to-r from-transparent via-white/70 to-transparent"
+        className="pointer-events-none absolute inset-y-0 z-0 w-48 rotate-[-20deg] bg-gradient-to-r from-transparent via-[#d4b67b]/40 to-transparent"
         style={{ left: '-25%' }}
         animate={{ left: ['-25%', '115%'] }}
         transition={{ duration: 9, repeat: Infinity, repeatDelay: 5, ease: 'easeInOut' }}
@@ -65,12 +117,12 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Headline com palavra rotativa */}
             <motion.h1
               {...fadeUp(0.1)}
               className="text-5xl sm:text-6xl lg:text-7xl font-display text-[#0F3A7D] mb-6 leading-tight"
             >
-              O Melhor do <span className="text-[#d4b67b]">Marketing</span> para seu Negócio
+              O Melhor do <RotatingWord /> para seu Negócio
             </motion.h1>
 
             {/* Description */}
@@ -82,7 +134,7 @@ export default function Hero() {
               receita. Com estúdio de podcast, tráfego pago e muito mais.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTAs */}
             <motion.div {...fadeUp(0.3)} className="flex flex-col sm:flex-row gap-4">
               <Button
                 className="bg-[#d4b67b] hover:bg-[#c9a36a] text-[#0F3A7D] font-semibold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
