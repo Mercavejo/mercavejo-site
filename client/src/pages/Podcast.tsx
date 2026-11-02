@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mic, Video, Scissors, Star, CheckCircle2, Instagram, ExternalLink, ClipboardList, Sparkles, Share2 } from "lucide-react";
+import { Mic, Video, Scissors, Star, CheckCircle2, Instagram, ExternalLink, ClipboardList, Sparkles, Share2, ArrowRight } from "lucide-react";
 import { SpotlightOverlay, handleSpotlightMove } from '@/components/effects/spotlight';
 import { motion } from "framer-motion";
 
@@ -274,13 +274,14 @@ export default function Podcast() {
             
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {podcastPackages.map((pkg, i) => (
-                <div key={i} className={`relative p-8 rounded-3xl border ${pkg.featured ? 'border-[#d4b67b] bg-white/5' : 'border-white/10 bg-white/5'}`}>
-                  {pkg.featured && (
+                <div key={i} onMouseMove={handleSpotlightMove} className={`group relative overflow-hidden p-8 rounded-3xl border transition duration-300 hover:-translate-y-1 hover:shadow-2xl ${pkg.featured ? 'border-[#d4b67b] bg-white/10 shadow-[0_24px_70px_-35px_rgba(212,182,123,0.7)]' : 'border-white/10 bg-white/5 hover:border-white/20'}`}>
+                  <SpotlightOverlay />                  {pkg.featured && (
                     <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#d4b67b] text-[#0F3A7D] px-4 py-1 rounded-full text-sm font-bold">
                       MAIS COMPLETO
                     </span>
                   )}
-                  <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+                  <h3 className="relative text-2xl font-bold mb-2">{pkg.name}</h3>
+                  <p className="relative mb-5 text-sm uppercase tracking-[0.18em] text-[#d4b67b]/80">{pkg.featured ? 'Para transformar conhecimento em presença digital' : 'Para gravar com estrutura profissional'}</p>
                   <div className="mb-4">
                     <span className="text-4xl font-bold text-[#d4b67b]">{pkg.price}</span>
                     <span className="text-white/60 ml-1">{pkg.unit}</span>
@@ -299,7 +300,7 @@ export default function Podcast() {
                     className={`w-full py-6 font-bold ${pkg.featured ? 'bg-[#d4b67b] text-[#0F3A7D] hover:bg-[#bfa46e]' : 'bg-white/10 text-white hover:bg-white/20'}`}
                   >
                     <a href={getPodcastBudgetHref(pkg.name)} target="_blank" rel="noopener noreferrer">
-                      Solicitar Orçamento
+                      Solicitar Orçamento <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </a>
                   </Button>
                 </div>
