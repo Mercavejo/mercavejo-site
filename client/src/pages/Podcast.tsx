@@ -42,13 +42,13 @@ const podcastDirectory = [
   { name: 'Treina que Sara', image: '/images/podcasts/treina-que-sara.png', href: 'https://www.instagram.com/treinaquesara/' },
   { name: 'Antes da Consulta', image: '/images/podcasts/antes-da-consulta.png', href: 'https://www.instagram.com/podcastantesdaconsulta/' },
   { name: 'Café com Zakia', image: '/images/podcasts/cafe-com-zakia.jpg', href: 'https://www.instagram.com/cafecomzakia/' },
-  { name: 'Sai do Raso', image: '/images/podcasts/sai-do-raso.png', href: 'https://www.instagram.com/lamanna_psicologa/' },
+  { name: 'Sai do Raso', image: '/images/podcasts/sai-do-raso.png', href: 'https://www.instagram.com/lamanna_psicologa/', platforms: [{ label: 'YouTube', href: 'https://www.youtube.com/@Sa%C3%ADdoRaso' }] },
   { name: 'Gente Amiga', image: '/images/podcasts/kung-fu-cast.jpg', href: 'https://www.instagram.com/podcastgenteamiga/' },
-  { name: 'Entre Mães no Espectro', image: '/images/podcasts/entre-maes-no-espectro.jpg', href: 'https://www.instagram.com/entremaesnoespectro/' },
-  { name: 'Consert Cast', image: '/images/podcasts/consert-cast.png', href: 'https://www.instagram.com/consertcast/' },
+  { name: 'Entre Mães no Espectro', image: '/images/podcasts/entre-maes-no-espectro.jpg', href: 'https://www.instagram.com/entremaesnoespectro/', platforms: [{ label: 'YouTube', href: 'https://www.youtube.com/@EntreM%C3%A3esnoEspectro' }, { label: 'Spotify', href: 'https://open.spotify.com/show/2smJswLjejkmSHDgYyrcNN' }, { label: 'TikTok', href: 'https://www.tiktok.com/@entremaesnoespectro' }] },
+  { name: 'Consert Cast', image: '/images/podcasts/consert-cast.png', href: 'https://www.instagram.com/consertcast/', platforms: [{ label: 'YouTube', href: 'https://www.youtube.com/@ConsertCast' }, { label: 'Spotify', href: 'https://open.spotify.com/show/5dz3gLiANnDZCBLJndiCvt' }, { label: 'TikTok', href: 'https://www.tiktok.com/@consertcast' }] },
   { name: 'SeAmar Podcast', image: '/images/podcasts/seamar.png', href: 'https://www.instagram.com/seamarpodcast/' },
   { name: 'Kung-Fu Cast', image: '/images/podcasts/gente-amiga.png', href: 'https://www.instagram.com/tigresdeshaolin/' },
-  { name: 'CeC Vida e Negócios', image: '/images/podcasts/cec-vida-e-negocio.png', href: 'https://www.instagram.com/cecvidaenegociopodcast/' },
+  { name: 'CeC Vida e Negócios', image: '/images/podcasts/cec-vida-e-negocio.png', href: 'https://www.instagram.com/cecvidaenegociopodcast/', platforms: [{ label: 'YouTube', href: 'https://www.youtube.com/@cecvidaenegociopodcast/' }] },
 ];
 
 
@@ -59,6 +59,10 @@ const cutExamples = [
   { title: 'Treina que Sara', type: 'Corte vertical', video: '/images/treina-que-sara.mp4', poster: '/images/treina-que-sara-poster.jpg' },
   { title: 'Antes da Consulta', type: 'Corte vertical', video: '/images/antes-da-consulta.mp4', poster: '/images/antes-da-consulta-poster.jpg' },
   { title: 'Café com Zakia', type: 'Corte vertical', video: '/images/cafe-com-zakia.mp4', poster: '/images/cafe-com-zakia-poster.jpg' },
+  { title: 'Consert Cast — Corte 01', type: 'Corte vertical', video: '/images/consert-cast-corte.mp4', poster: '/images/consert-cast-corte-poster.jpg' },
+  { title: 'Entre Mães no Espectro — Corte 03', type: 'Corte vertical', video: '/images/entre-maes-corte.mp4', poster: '/images/entre-maes-corte-poster.jpg' },
+  { title: 'Sai do Raso — Corte 01', type: 'Corte vertical', video: '/images/sai-do-raso-corte.mp4', poster: '/images/sai-do-raso-corte-poster.jpg' },
+  { title: 'CeC Vida e Negócios — Corte 01', type: 'Corte vertical', video: '/images/cec-vida-e-negocios-corte.mp4', poster: '/images/cec-vida-e-negocios-corte-poster.jpg' },
 ];
 
 export default function Podcast() {
@@ -129,11 +133,8 @@ export default function Podcast() {
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {podcastDirectory.map((podcast, index) => (
-                <motion.a
+                <motion.div
                   key={podcast.name}
-                  href={podcast.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
@@ -142,15 +143,26 @@ export default function Podcast() {
                   className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-4"
                 >
                   <SpotlightOverlay />
-                  <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-slate-50 p-3 sm:p-5">
-                    <img src={podcast.image} alt={`Logo do ${podcast.name}`} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
-                  </div>
-                  <div className="relative mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-[#0F3A7D]">
-                    {podcast.name}
-                    <Instagram className="h-3.5 w-3.5 shrink-0 text-[#d4b67b]" />
-                  </div>
-                  <span className="relative mt-1 inline-flex items-center gap-1 text-xs text-slate-400">Ver no Instagram <ExternalLink className="h-3 w-3" /></span>
-                </motion.a>
+                  <a href={podcast.href} target="_blank" rel="noopener noreferrer" className="relative block">
+                    <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-slate-50 p-3 sm:p-5">
+                      <img src={podcast.image} alt={`Logo do ${podcast.name}`} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                    <div className="relative mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-[#0F3A7D]">
+                      {podcast.name}
+                      <Instagram className="h-3.5 w-3.5 shrink-0 text-[#d4b67b]" />
+                    </div>
+                    <span className="relative mt-1 inline-flex items-center gap-1 text-xs text-slate-400">Ver no Instagram <ExternalLink className="h-3 w-3" /></span>
+                  </a>
+                  {podcast.platforms && (
+                    <div className="relative mt-3 flex flex-wrap justify-center gap-1.5 border-t border-slate-100 pt-3">
+                      {podcast.platforms.map((platform) => (
+                        <a key={platform.label} href={platform.href} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#0F3A7D]/5 px-2 py-1 text-[10px] font-semibold text-[#0F3A7D] transition-colors hover:bg-[#d4b67b]/25" aria-label={`${platform.label} do ${podcast.name}`}>
+                          {platform.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
               ))}
             </div>
           </div>
