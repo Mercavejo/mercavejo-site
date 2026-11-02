@@ -1,19 +1,13 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 type AuroraProps = {
   className?: string;
-  /** Gradient colors for the drifting blobs. Defaults to the Mercavejo palette. */
   colors?: [string, string, string?];
-  /** Animation speed multiplier. Lower = slower. */
   speed?: number;
-  /** Opacity scale for the blobs. */
   intensity?: number;
 };
 
-/**
- * Animated "aurora" background: large blurred gradient blobs drifting slowly.
- * Pure framer-motion, no WebGL dependency. Layer it behind content with pointer-events-none.
- */
 export default function Aurora({
   className = '',
   colors = ['#20447D', '#d4b67b', '#0F3A7D'],
@@ -21,42 +15,43 @@ export default function Aurora({
   intensity = 1,
 }: AuroraProps) {
   const [c1, c2, c3] = colors;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)');
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  const blobClass = 'absolute rounded-full';
+  const blobStyle = (color: string, opacity: number) => ({
+    background: `radial-gradient(circle at center, ${color}, transparent 68%)`,
+    opacity: opacity * intensity,
+    filter: isMobile ? 'blur(42px)' : 'blur(72px)',
+  });
 
   return (
-    <div
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
-      aria-hidden="true"
-    >
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
       <motion.div
-        className="absolute -top-[20%] -left-[15%] h-[70vmax] w-[70vmax] rounded-full"
-        style={{
-          background: `radial-gradient(circle at center, ${c1}, transparent 62%)`,
-          opacity: 0.35 * intensity,
-          filter: 'blur(100px)',
-        }}
-        animate={{ x: [0, 140, -60, 0], y: [0, 80, 140, 0], scale: [1, 1.18, 0.94, 1] }}
-        transition={{ duration: 22 / speed, repeat: Infinity, ease: 'easeInOut' }}
+        className={`${blobClass} -left-[18%] -top-[18%] h-[58vmax] w-[58vmax]`}
+        style={blobStyle(c1, 0.28)}
+        animate={isMobile ? undefined : { x: [0, 90, -40, 0], y: [0, 50, 90, 0], scale: [1, 1.08, 0.98, 1] }}
+        transition={{ duration: 30 / speed, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute top-[10%] -right-[15%] h-[60vmax] w-[60vmax] rounded-full"
-        style={{
-          background: `radial-gradient(circle at center, ${c2}, transparent 62%)`,
-          opacity: 0.28 * intensity,
-          filter: 'blur(100px)',
-        }}
-        animate={{ x: [0, -120, 70, 0], y: [0, -90, 60, 0], scale: [1, 0.92, 1.12, 1] }}
-        transition={{ duration: 26 / speed, repeat: Infinity, ease: 'easeInOut' }}
+        className={`${blobClass} -right-[18%] top-[18%] h-[48vmax] w-[48vmax]`}
+        style={blobStyle(c2, 0.2)}
+        animate={isMobile ? undefined : { x: [0, -80, 40, 0], y: [0, -50, 45, 0], scale: [1, 0.96, 1.06, 1] }}
+        transition={{ duration: 34 / speed, repeat: Infinity, ease: 'easeInOut' }}
       />
-      {c3 && (
+      {!isMobile && c3 && (
         <motion.div
-          className="absolute bottom-[-25%] left-[25%] h-[55vmax] w-[55vmax] rounded-full"
-          style={{
-            background: `radial-gradient(circle at center, ${c3}, transparent 62%)`,
-            opacity: 0.3 * intensity,
-            filter: 'blur(100px)',
-          }}
-          animate={{ x: [0, 90, -90, 0], y: [0, -60, -110, 0], scale: [1, 1.1, 0.96, 1] }}
-          transition={{ duration: 30 / speed, repeat: Infinity, ease: 'easeInOut' }}
+          className={`${blobClass} bottom-[-24%] left-[28%] h-[42vmax] w-[42vmax]`}
+          style={blobStyle(c3, 0.18)}
+          animate={{ x: [0, 60, -60, 0], y: [0, -50, -80, 0], scale: [1, 1.05, 0.98, 1] }}
+          transition={{ duration: 38 / speed, repeat: Infinity, ease: 'easeInOut' }}
         />
       )}
     </div>
