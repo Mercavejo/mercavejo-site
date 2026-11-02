@@ -74,14 +74,14 @@ export default function Podcast() {
     return () => observer.disconnect();
   }, []);
 
-  const handleMouseEnter = (videoRef: React.RefObject<HTMLVideoElement>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
+  const handleMouseEnter = (videoRef: React.RefObject<HTMLVideoElement | null>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
     if (videoRef.current) {
       videoRef.current.muted = false;
       setMuted(false);
     }
   };
 
-  const handleMouseLeave = (videoRef: React.RefObject<HTMLVideoElement>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
+  const handleMouseLeave = (videoRef: React.RefObject<HTMLVideoElement | null>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
     if (videoRef.current) {
       videoRef.current.muted = true;
       setMuted(true);
