@@ -100,7 +100,9 @@ export default function WebsiteProjects() {
   );
 
   const featuredProject = websiteProjects.find((project) => project.featured);
-  const gridProjects = filteredProjects.filter((project) => project.title !== featuredProject?.title);
+  const gridProjects = activeCategory === 'Todos'
+    ? filteredProjects.filter((project) => project.title !== featuredProject?.title)
+    : filteredProjects;
   const showFeatured = activeCategory === 'Todos' && featuredProject;
 
   return (
