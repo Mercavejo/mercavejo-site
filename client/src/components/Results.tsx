@@ -5,9 +5,9 @@ import Aurora from '@/components/effects/Aurora';
 
 const stats = [
   { icon: CalendarDays, value: 16, suffix: '+', label: 'Anos de mercado', hint: 'desde 2009' },
-  { icon: Users, value: 8, suffix: '', label: 'Marcas atendidas', hint: 'em gestão contínua' },
-  { icon: Monitor, value: 6, suffix: '', label: 'Sites entregues', hint: 'landing pages e e-commerce' },
-  { icon: Mic, value: 7, suffix: '', label: 'Podcasts no estúdio', hint: 'produzidos internamente' },
+  { icon: Users, value: 21, suffix: '', label: 'Marcas atendidas', hint: 'em gestão contínua' },
+  { icon: Monitor, value: 10, suffix: '', label: 'Sites entregues', hint: 'landing pages e e-commerce' },
+  { icon: Mic, value: 10, suffix: '', label: 'Podcasts no estúdio', hint: 'produzidos internamente' },
 ];
 
 export default function Results() {
