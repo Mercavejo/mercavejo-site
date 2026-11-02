@@ -206,13 +206,17 @@ export default function Podcast() {
         {/* Seção de Cortes */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="mb-8 md:mb-0 md:w-1/2">
-                <h2 className="text-3xl md:text-4xl font-display text-[#0F3A7D] mb-6">O Poder dos Cortes</h2>
-                <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+            <div className="mx-auto max-w-7xl">
+              <div className="mx-auto mb-10 max-w-3xl text-center">
+                <span className="mb-3 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Portfólio em vídeo</span>
+                <h2 className="text-3xl md:text-4xl font-display text-[#0F3A7D] mb-4">O Poder dos Cortes</h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
                   Um episódio de 1 hora pode gerar até 10 vídeos curtos de alto impacto. Nós extraímos os melhores momentos para alimentar suas redes sociais durante toda a semana.
                 </p>
-                <div className="mb-7 flex flex-wrap gap-2" aria-label="Filtrar cortes por podcast">
+              </div>
+
+              <div className="mb-8 flex flex-col items-center gap-5">
+                <div className="flex flex-wrap justify-center gap-2" aria-label="Filtrar cortes por podcast">
                   {cutFilters.map((filter) => {
                     const isActive = selectedCutFilter === filter;
                     return (
@@ -232,23 +236,24 @@ export default function Podcast() {
                     );
                   })}
                 </div>
-                <ul className="space-y-4">
+                <div className="grid w-full max-w-3xl gap-3 text-sm text-gray-600 sm:grid-cols-2">
                   {[
                     "Aumento de alcance orgânico",
                     "Autoridade instantânea no nicho",
                     "Conteúdo infinito para Instagram e TikTok",
                     "Engajamento multicanal"
                   ].map((text, i) => (
-                    <li key={i} className="flex items-center gap-3 text-gray-700">
-                      <CheckCircle2 className="text-[#d4b67b] w-5 h-5" />
+                    <div key={i} className="flex items-center justify-center gap-2 sm:justify-start">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-[#d4b67b]" />
                       {text}
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="grid w-full grid-cols-2 gap-4 md:w-1/2">
+
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                 {filteredCuts.map((cut, index) => (
-                  <article key={cut.video} className={`group relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 1 ? 'mt-8' : ''}`}>
+                  <article key={cut.video} className="group relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <video
                       ref={(element) => { videoRefs.current[index] = element; }}
                       src={cut.video}
