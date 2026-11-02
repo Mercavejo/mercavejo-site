@@ -2,9 +2,12 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Clients from '@/components/Clients';
+import Results from '@/components/Results';
 import Portfolio from '@/components/Portfolio';
 import WebsiteProjects from '@/components/WebsiteProjects';
 import Studio from '@/components/Studio';
+import Testimonials from '@/components/Testimonials';
+import Packages from '@/components/Packages';
 
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
@@ -23,6 +26,8 @@ export default function Home() {
 
         <Clients />
 
+        <Results />
+
         {/* 2 - azul (novo azul #20447D) */}
         <div className="bg-[#20447D] text-white">
           <Services />
@@ -33,7 +38,8 @@ export default function Home() {
 
         <WebsiteProjects />
 
-        {/* 4 - Depoimentos oculto temporariamente */}
+        {/* 4 - Depoimentos */}
+        <Testimonials />
 
         {/* 5 - azul (novo azul #20447D) */}
         <div className="bg-[#20447D] text-white">
@@ -41,6 +47,9 @@ export default function Home() {
         </div>
 
 
+
+        {/* 5.5 - Pacotes (Investimento) */}
+        <Packages />
 
         {/* 6 - FAQ */}
         <FAQ />
