@@ -36,15 +36,24 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      toast.success('Contato enviado com sucesso! Em breve retornaremos.');
-      setForm({ name: '', email: '', reason: 'Orçamento' });
-    } catch (err) {
-      toast.error('Erro ao enviar. Tente novamente.');
-    } finally {
+    const message = encodeURIComponent([
+      'Olá! Vim pelo site da Mercavejo.',
+      `Nome: ${form.name.trim()}`,
+      `E-mail: ${form.email.trim()}`,
+      `Motivo: ${form.reason}`,
+    ].join('\n'));
+    const contactUrl = `https://wa.me/${whatsappPhone}?text=${message}`;
+    const popup = window.open(contactUrl, '_blank', 'noopener,noreferrer');
+
+    if (!popup) {
+      toast.error('Não foi possível abrir o WhatsApp. Verifique o bloqueador de pop-ups.');
       setIsSubmitting(false);
+      return;
     }
+
+    toast.success('WhatsApp aberto com sua mensagem pronta.');
+    setForm({ name: '', email: '', reason: 'Orçamento' });
+    setIsSubmitting(false);
   };
 
   return (
