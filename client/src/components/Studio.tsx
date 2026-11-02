@@ -27,7 +27,7 @@ export default function Studio() {
               <p className="text-xs font-bold tracking-widest text-[#d4b67b] uppercase">
                 Podcasts de Sucesso:
               </p>
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {[
                   { name: "Treina que Sara", href: "https://www.instagram.com/treinaquesara/" },
                   { name: "Antes da consulta", href: "https://www.instagram.com/podcastantesdaconsulta/" },
