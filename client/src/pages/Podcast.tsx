@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mic, Video, Scissors, Star, CheckCircle2, Instagram, ExternalLink } from "lucide-react";
+import { Mic, Video, Scissors, Star, CheckCircle2, Instagram, ExternalLink, ClipboardList, Sparkles, Share2 } from "lucide-react";
 import { SpotlightOverlay, handleSpotlightMove } from '@/components/effects/spotlight';
 import { motion } from "framer-motion";
 
@@ -224,6 +224,42 @@ export default function Podcast() {
                   </article>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Processo de produção */}
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-14 max-w-2xl text-center">
+              <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Do roteiro à publicação</span>
+              <h2 className="text-3xl font-display text-[#0F3A7D] sm:text-4xl">Um processo pensado para gerar conteúdo</h2>
+              <p className="mt-4 text-gray-600">Cada etapa é planejada para transformar uma conversa em um ativo de comunicação para sua marca.</p>
+            </div>
+
+            <div className="relative mx-auto grid max-w-6xl gap-8 md:grid-cols-5 md:gap-4">
+              <div aria-hidden="true" className="absolute left-7 top-8 h-[calc(100%-64px)] w-px bg-[#d4b67b]/50 md:left-0 md:right-0 md:top-8 md:h-px md:w-auto" />
+              {[
+                { number: '01', title: 'Pauta', text: 'Definimos o tema, objetivo e convidados.', icon: ClipboardList },
+                { number: '02', title: 'Gravação', text: 'Captação de áudio e vídeo no estúdio.', icon: Mic },
+                { number: '03', title: 'Edição', text: 'Tratamento de áudio, cor e ritmo.', icon: Sparkles },
+                { number: '04', title: 'Cortes', text: 'Extraímos os melhores momentos para redes.', icon: Scissors },
+                { number: '05', title: 'Publicação', text: 'Conteúdo pronto para circular e gerar alcance.', icon: Share2 },
+              ].map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <motion.div key={step.number} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.4, delay: index * 0.07 }} className="relative z-10 flex gap-4 md:block md:text-center">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-4 border-slate-50 bg-[#0F3A7D] text-[#d4b67b] shadow-lg md:mx-auto">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div className="pt-1 md:pt-5">
+                      <span className="text-xs font-bold tracking-[0.2em] text-[#d4b67b]">{step.number}</span>
+                      <h3 className="mt-1 text-xl font-bold text-[#0F3A7D]">{step.title}</h3>
+                      <p className="mt-2 max-w-[190px] text-sm leading-relaxed text-gray-600 md:mx-auto">{step.text}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
