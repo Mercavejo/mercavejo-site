@@ -13,11 +13,11 @@ const portfolioItems: PortfolioItem[] = [
   { title: 'Exonline', category: 'Design', image: '/images/exonlinearte.webp' },
   { title: 'Optica Brasil', category: 'Design', image: '/images/opticaarte.webp' },
   { title: 'Sublime', category: 'Design', image: '/images/sublimearte.jpg' },
-  { title: 'Vox Fm', category: 'Design', image: '/images/voxarte.webp' },
+  { title: 'Mercavejo', category: 'Design', image: '/images/mercavejoarte.png' },
   { title: 'Faveni', category: 'Social Media', image: '/images/faveniarte.webp' },
-  { title: 'Netflex', category: 'Social Media', image: '/images/netflexarte.webp' },
+  { title: 'Netflex', category: 'Social Media', image: '/images/netflexarte.png' },
   { title: 'Rio Fibra', category: 'Social Media', image: '/images/riofibraarte.webp' },
-  { title: 'Açougue Scoz', category: 'Social Media', image: '/images/scozarte.webp' },
+  { title: 'Açougue Scoz', category: 'Social Media', image: '/images/scozarte.png' },
 ];
 
 export default function Portfolio() {
