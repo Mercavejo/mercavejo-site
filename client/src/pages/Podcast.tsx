@@ -276,7 +276,7 @@ export default function Podcast() {
               {podcastPackages.map((pkg, i) => (
                 <div key={i} onMouseMove={handleSpotlightMove} className={`group relative overflow-hidden p-8 rounded-3xl border transition duration-300 hover:-translate-y-1 hover:shadow-2xl ${pkg.featured ? 'border-[#d4b67b] bg-white/10 shadow-[0_24px_70px_-35px_rgba(212,182,123,0.7)]' : 'border-white/10 bg-white/5 hover:border-white/20'}`}>
                   <SpotlightOverlay />                  {pkg.featured && (
-                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#d4b67b] text-[#0F3A7D] px-4 py-1 rounded-full text-sm font-bold">
+                    <span className="absolute right-6 top-5 rounded-full bg-[#d4b67b] px-4 py-1 text-xs font-bold text-[#0F3A7D] shadow-lg">
                       MAIS COMPLETO
                     </span>
                   )}
