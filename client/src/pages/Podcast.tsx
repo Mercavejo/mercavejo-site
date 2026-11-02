@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -65,6 +65,14 @@ const cutExamples = [
   { title: 'CeC Vida e Negócios — Corte 01', type: 'Corte vertical', podcast: 'CeC', video: '/images/cec-vida-e-negocios-corte.mp4', poster: '/images/cec-vida-e-negocios-corte-poster.jpg' },
 ];
 
+const faqItems = [
+  { question: 'Quanto custa a locação do estúdio?', answer: 'A locação do estúdio custa R$ 500 por hora e inclui cenário, iluminação profissional, até quatro microfones, acompanhamento técnico de áudio, gravação em 4K e entrega dos arquivos brutos.' },
+  { question: 'Quantas pessoas podem participar da gravação?', answer: 'O estúdio comporta até quatro participantes com microfones individuais, mantendo uma estrutura confortável para conversas, entrevistas e mesas de podcast.' },
+  { question: 'Vocês fazem a edição e os cortes?', answer: 'Sim. Na Produção Completa, cuidamos da edição do episódio, tratamento de áudio e cor, criação de capas e cortes para redes sociais.' },
+  { question: 'Quem escolhe os melhores momentos para os cortes?', answer: 'A seleção dos momentos é feita por você. Depois, nossa equipe transforma os trechos escolhidos em cortes verticais prontos para publicar.' },
+  { question: 'Como faço para agendar?', answer: 'Clique em Solicitar Orçamento, informe o formato desejado e nossa equipe retorna pelo WhatsApp para confirmar disponibilidade e próximos passos.' },
+];
+
 const cutFilters = ['Todos', 'Consert Cast', 'Entre Mães', 'Sai do Raso', 'CeC', 'Outros'];
 
 export default function Podcast() {
@@ -72,6 +80,37 @@ export default function Podcast() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [playingCut, setPlayingCut] = useState<number | null>(null);
   const [selectedCutFilter, setSelectedCutFilter] = useState('Todos');
+
+  useEffect(() => {
+    document.title = 'Estúdio de Podcast em Catanduva | Mercavejo';
+    const description = 'Grave seu podcast em um estúdio profissional em Catanduva, com áudio, vídeo 4K, edição, cortes para redes sociais e publicação completa.';
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', description);
+
+    const canonicalUrl = 'https://www.mercavejo.com.br/podcast';
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
+    const structuredData = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) };
+    let schema = document.getElementById('podcast-faq-schema') as HTMLScriptElement | null;
+    if (!schema) {
+      schema = document.createElement('script');
+      schema.id = 'podcast-faq-schema';
+      schema.type = 'application/ld+json';
+      document.head.appendChild(schema);
+    }
+    schema.textContent = JSON.stringify(structuredData);
+  }, []);
 
   const filteredCuts = selectedCutFilter === 'Todos'
     ? cutExamples
@@ -96,9 +135,8 @@ export default function Podcast() {
       <main>
         {/* Hero Section */}
         <section className="relative py-20 bg-[#0F3A7D] text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2000')] bg-cover bg-center" />
-          </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(212,182,123,0.28),transparent_32%),radial-gradient(circle_at_80%_65%,rgba(64,125,190,0.35),transparent_38%),linear-gradient(135deg,#0F3A7D_0%,#20447D_55%,#0b2b5c_100%)]" />
+          <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:42px_42px]" />
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
@@ -308,6 +346,28 @@ export default function Podcast() {
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="bg-white py-20 sm:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Dúvidas frequentes</span>
+              <h2 className="text-3xl font-display text-[#0F3A7D] sm:text-4xl">Tudo para você gravar com segurança</h2>
+              <p className="mt-4 text-gray-600">Veja como funciona a locação e a produção do seu podcast antes de agendar.</p>
+            </div>
+            <div className="mx-auto max-w-3xl divide-y divide-slate-200 rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm sm:px-8">
+              {faqItems.map((item) => (
+                <details key={item.question} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left font-semibold text-[#0F3A7D] [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <span className="text-2xl font-light text-[#d4b67b] transition-transform duration-200 group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl pr-8 text-sm leading-relaxed text-gray-600">{item.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
