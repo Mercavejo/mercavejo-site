@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -52,49 +52,21 @@ const podcastDirectory = [
 ];
 
 
+const cutExamples = [
+  { title: 'Corte 01', type: 'Reels / TikTok', video: '/images/corte1.mp4', poster: '/images/corte1-poster.jpg' },
+  { title: 'Corte 02', type: 'YouTube Shorts', video: '/images/corte2.mp4', poster: '/images/corte2-poster.jpg' },
+];
+
 export default function Podcast() {
   const whatsappPhone = '5517996240418';
-  const videoRef1 = useRef<HTMLVideoElement>(null);
-  const videoRef2 = useRef<HTMLVideoElement>(null);
-  const [isMuted1, setIsMuted1] = useState(true);
-  const [isMuted2, setIsMuted2] = useState(true);
-  const [video1InView, setVideo1InView] = useState(false);
-  const [video2InView, setVideo2InView] = useState(false);
-  const containerRef1 = useRef<HTMLDivElement>(null);
-  const containerRef2 = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [playingCut, setPlayingCut] = useState<number | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === containerRef1.current) {
-            setVideo1InView(entry.isIntersecting);
-          } else if (entry.target === containerRef2.current) {
-            setVideo2InView(entry.isIntersecting);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '200px' }
-    );
-
-    if (containerRef1.current) observer.observe(containerRef1.current);
-    if (containerRef2.current) observer.observe(containerRef2.current);
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleMouseEnter = (videoRef: React.RefObject<HTMLVideoElement | null>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
-    if (videoRef.current) {
-      videoRef.current.muted = false;
-      setMuted(false);
-    }
-  };
-
-  const handleMouseLeave = (videoRef: React.RefObject<HTMLVideoElement | null>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      setMuted(true);
-    }
+  const handleCutPlay = (index: number) => {
+    videoRefs.current.forEach((video, videoIndex) => {
+      if (video && videoIndex !== index) video.pause();
+    });
+    setPlayingCut(index);
   };
 
   const getPodcastBudgetHref = (packageName: string) => {
@@ -130,10 +102,10 @@ export default function Podcast() {
                   Não somos apenas um espaço para gravar. Somos a única agência em Catanduva com estúdio próprio focado em transformar conversas em autoridade e vendas.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-[#d4b67b] hover:bg-[#bfa46e] text-[#0F3A7D] font-bold">
+                  <Button size="lg" className="bg-[#d4b67b] hover:bg-[#bfa46e] text-[#0F3A7D] font-bold" onClick={() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })}>
                     Reservar meu Horário
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => document.getElementById('podcast-directory')?.scrollIntoView({ behavior: 'smooth' })}>
                     Ver Portfólio
                   </Button>
                 </div>
@@ -143,7 +115,7 @@ export default function Podcast() {
         </section>
 
         {/* Podcasts produzidos no estúdio */}
-        <section className="bg-slate-50 py-20 sm:py-28">
+        <section id="podcast-directory" className="bg-slate-50 py-20 sm:py-28">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Conteúdo produzido pela Mercavejo</span>
@@ -231,54 +203,33 @@ export default function Podcast() {
                   ))}
                 </ul>
               </div>
-              <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                <div 
-                  ref={containerRef1}
-                  className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                  onMouseEnter={() => handleMouseEnter(videoRef1, setIsMuted1)}
-                  onMouseLeave={() => handleMouseLeave(videoRef1, setIsMuted1)}
-                >
-                   {video1InView ? (
-                     <video 
-                       ref={videoRef1}
-                       src="/images/corte1.mp4" 
-                       className="w-full h-full object-cover" 
-                       autoPlay
-                       loop
-                       muted={isMuted1}
-                       playsInline
-                     />
-                   ) : (
-                     <div className="w-full h-full bg-gray-800 animate-pulse" />
-                   )}
-                </div>
-                <div 
-                  ref={containerRef2}
-                  className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                  onMouseEnter={() => handleMouseEnter(videoRef2, setIsMuted2)}
-                  onMouseLeave={() => handleMouseLeave(videoRef2, setIsMuted2)}
-                >
-                   {video2InView ? (
-                     <video 
-                       ref={videoRef2}
-                       src="/images/corte2.mp4" 
-                       className="w-full h-full object-cover" 
-                       autoPlay
-                       loop
-                       muted={isMuted2}
-                       playsInline
-                     />
-                   ) : (
-                     <div className="w-full h-full bg-gray-800 animate-pulse" />
-                   )}
-                </div>
+              <div className="grid w-full grid-cols-2 gap-4 md:w-1/2">
+                {cutExamples.map((cut, index) => (
+                  <article key={cut.video} className={`group relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 1 ? 'mt-8' : ''}`}>
+                    <video
+                      ref={(element) => { videoRefs.current[index] = element; }}
+                      src={cut.video}
+                      poster={cut.poster}
+                      className="aspect-[9/16] h-full w-full object-cover"
+                      controls
+                      playsInline
+                      preload="none"
+                      onPlay={() => handleCutPlay(index)}
+                      onPause={() => playingCut === index && setPlayingCut(null)}
+                    />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-12 text-white">
+                      <p className="text-sm font-bold">{cut.title}</p>
+                      <p className="text-xs text-white/70">{cut.type}</p>
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Pacotes */}
-        <section className="py-20 bg-[#0F3A7D] text-white">
+        <section id="packages" className="py-20 bg-[#0F3A7D] text-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-display mb-4">Planos para seu Podcast</h2>
