@@ -7,7 +7,6 @@ import Portfolio from '@/components/Portfolio';
 import WebsiteProjects from '@/components/WebsiteProjects';
 import Studio from '@/components/Studio';
 import Testimonials from '@/components/Testimonials';
-import Packages from '@/components/Packages';
 
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
@@ -47,9 +46,6 @@ export default function Home() {
         </div>
 
 
-
-        {/* 5.5 - Pacotes (Investimento) */}
-        <Packages />
 
         {/* 6 - FAQ */}
         <FAQ />
