@@ -3,7 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mic, Video, Scissors, Users, Star, CheckCircle2 } from "lucide-react";
+import { Mic, Video, Scissors, Star, CheckCircle2, Instagram, ExternalLink } from "lucide-react";
+import { SpotlightOverlay, handleSpotlightMove } from '@/components/effects/spotlight';
 import { motion } from "framer-motion";
 
 const podcastPackages = [
@@ -37,11 +38,19 @@ const podcastPackages = [
   }
 ];
 
-const cutsExamples = [
-  { title: "Corte Estratégico 1", type: "Reels/TikTok" },
-  { title: "Corte Estratégico 2", type: "YouTube Shorts" },
-  { title: "Corte Estratégico 3", type: "Instagram" },
+const podcastDirectory = [
+  { name: 'Treina que Sara', image: '/images/podcasts/treina-que-sara.png', href: 'https://www.instagram.com/treinaquesara/' },
+  { name: 'Antes da Consulta', image: '/images/podcasts/antes-da-consulta.png', href: 'https://www.instagram.com/podcastantesdaconsulta/' },
+  { name: 'Café com Zakia', image: '/images/podcasts/cafe-com-zakia.jpg', href: 'https://www.instagram.com/cafecomzakia/' },
+  { name: 'Sai do Raso', image: '/images/podcasts/sai-do-raso.png', href: 'https://www.instagram.com/lamanna_psicologa/' },
+  { name: 'Gente Amiga', image: '/images/podcasts/gente-amiga.png', href: 'https://www.instagram.com/podcastgenteamiga/' },
+  { name: 'Entre Mães no Espectro', image: '/images/podcasts/entre-maes-no-espectro.jpg', href: 'https://www.instagram.com/entremaesnoespectro/' },
+  { name: 'Consert Cast', image: '/images/podcasts/consert-cast.png', href: 'https://www.instagram.com/consertcast/' },
+  { name: 'SeAmar Podcast', image: '/images/podcasts/seamar.png', href: 'https://www.instagram.com/seamarpodcast/' },
+  { name: 'Kung-Fu Cast', image: '/images/podcasts/kung-fu-cast.jpg', href: 'https://www.instagram.com/tigresdeshaolin/' },
+  { name: 'CeC Vida e Negócios', image: '/images/podcasts/cec-vida-e-negocio.png', href: 'https://www.instagram.com/cecvidaenegociopodcast/' },
 ];
+
 
 export default function Podcast() {
   const whatsappPhone = '5517996240418';
@@ -129,6 +138,44 @@ export default function Podcast() {
                   </Button>
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Podcasts produzidos no estúdio */}
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <span className="mb-4 inline-flex rounded-full border border-[#d4b67b]/30 bg-[#d4b67b]/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#0F3A7D]">Conteúdo produzido pela Mercavejo</span>
+              <h2 className="text-3xl font-display text-[#0F3A7D] sm:text-4xl">Podcasts que ganham voz no nosso estúdio</h2>
+              <p className="mt-4 text-gray-600">Marcas, especialistas e histórias transformadas em conteúdo para continuar trabalhando depois da gravação.</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {podcastDirectory.map((podcast, index) => (
+                <motion.a
+                  key={podcast.name}
+                  href={podcast.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.35, delay: index * 0.035 }}
+                  onMouseMove={handleSpotlightMove}
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-4"
+                >
+                  <SpotlightOverlay />
+                  <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-slate-50 p-3 sm:p-5">
+                    <img src={podcast.image} alt={`Logo do ${podcast.name}`} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                  <div className="relative mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-[#0F3A7D]">
+                    {podcast.name}
+                    <Instagram className="h-3.5 w-3.5 shrink-0 text-[#d4b67b]" />
+                  </div>
+                  <span className="relative mt-1 inline-flex items-center gap-1 text-xs text-slate-400">Ver no Instagram <ExternalLink className="h-3 w-3" /></span>
+                </motion.a>
+              ))}
             </div>
           </div>
         </section>

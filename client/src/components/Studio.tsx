@@ -35,7 +35,10 @@ export default function Studio() {
                   { name: "Sai do raso", href: "https://www.instagram.com/lamanna_psicologa/" },
                   { name: "Gente amiga", href: "https://www.instagram.com/podcastgenteamiga/" },
                   { name: "Entre Mães no Espectro", href: "https://www.instagram.com/entremaesnoespectro/" },
-                  { name: "Consert Cast", href: "https://www.instagram.com/consertcast/" }
+                  { name: "Consert Cast", href: "https://www.instagram.com/consertcast/" },
+                  { name: "SeAmar Podcast", href: "https://www.instagram.com/seamarpodcast/" },
+                  { name: "Kung-Fu Cast", href: "https://www.instagram.com/tigresdeshaolin/" },
+                  { name: "CeC Vida e Negócios", href: "https://www.instagram.com/cecvidaenegociopodcast/" }
                 ].map((podcast) => (
                   <a
                     key={podcast.name}
