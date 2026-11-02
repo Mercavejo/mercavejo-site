@@ -55,6 +55,10 @@ const podcastDirectory = [
 const cutExamples = [
   { title: 'Corte 01', type: 'Reels / TikTok', video: '/images/corte1.mp4', poster: '/images/corte1-poster.jpg' },
   { title: 'Corte 02', type: 'YouTube Shorts', video: '/images/corte2.mp4', poster: '/images/corte2-poster.jpg' },
+  { title: 'SeAmar Podcast', type: 'Corte vertical', video: '/images/seamar.mp4', poster: '/images/seamar-poster.jpg' },
+  { title: 'Treina que Sara', type: 'Corte vertical', video: '/images/treina-que-sara.mp4', poster: '/images/treina-que-sara-poster.jpg' },
+  { title: 'Antes da Consulta', type: 'Corte vertical', video: '/images/antes-da-consulta.mp4', poster: '/images/antes-da-consulta-poster.jpg' },
+  { title: 'Café com Zakia', type: 'Corte vertical', video: '/images/cafe-com-zakia.mp4', poster: '/images/cafe-com-zakia-poster.jpg' },
 ];
 
 export default function Podcast() {
