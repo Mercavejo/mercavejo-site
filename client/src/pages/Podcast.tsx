@@ -53,22 +53,29 @@ const podcastDirectory = [
 
 
 const cutExamples = [
-  { title: 'Corte 01', type: 'Reels / TikTok', video: '/images/corte1.mp4', poster: '/images/corte1-poster.jpg' },
-  { title: 'Corte 02', type: 'YouTube Shorts', video: '/images/corte2.mp4', poster: '/images/corte2-poster.jpg' },
-  { title: 'SeAmar Podcast', type: 'Corte vertical', video: '/images/seamar.mp4', poster: '/images/seamar-poster.jpg' },
-  { title: 'Treina que Sara', type: 'Corte vertical', video: '/images/treina-que-sara.mp4', poster: '/images/treina-que-sara-poster.jpg' },
-  { title: 'Antes da Consulta', type: 'Corte vertical', video: '/images/antes-da-consulta.mp4', poster: '/images/antes-da-consulta-poster.jpg' },
-  { title: 'Café com Zakia', type: 'Corte vertical', video: '/images/cafe-com-zakia.mp4', poster: '/images/cafe-com-zakia-poster.jpg' },
-  { title: 'Consert Cast — Corte 01', type: 'Corte vertical', video: '/images/consert-cast-corte.mp4', poster: '/images/consert-cast-corte-poster.jpg' },
-  { title: 'Entre Mães no Espectro — Corte 03', type: 'Corte vertical', video: '/images/entre-maes-corte.mp4', poster: '/images/entre-maes-corte-poster.jpg' },
-  { title: 'Sai do Raso — Corte 01', type: 'Corte vertical', video: '/images/sai-do-raso-corte.mp4', poster: '/images/sai-do-raso-corte-poster.jpg' },
-  { title: 'CeC Vida e Negócios — Corte 01', type: 'Corte vertical', video: '/images/cec-vida-e-negocios-corte.mp4', poster: '/images/cec-vida-e-negocios-corte-poster.jpg' },
+  { title: 'Corte 01', type: 'Reels / TikTok', podcast: 'Outros', video: '/images/corte1.mp4', poster: '/images/corte1-poster.jpg' },
+  { title: 'Corte 02', type: 'YouTube Shorts', podcast: 'Outros', video: '/images/corte2.mp4', poster: '/images/corte2-poster.jpg' },
+  { title: 'SeAmar Podcast', type: 'Corte vertical', podcast: 'Outros', video: '/images/seamar.mp4', poster: '/images/seamar-poster.jpg' },
+  { title: 'Treina que Sara', type: 'Corte vertical', podcast: 'Outros', video: '/images/treina-que-sara.mp4', poster: '/images/treina-que-sara-poster.jpg' },
+  { title: 'Antes da Consulta', type: 'Corte vertical', podcast: 'Outros', video: '/images/antes-da-consulta.mp4', poster: '/images/antes-da-consulta-poster.jpg' },
+  { title: 'Café com Zakia', type: 'Corte vertical', podcast: 'Outros', video: '/images/cafe-com-zakia.mp4', poster: '/images/cafe-com-zakia-poster.jpg' },
+  { title: 'Consert Cast — Corte 01', type: 'Corte vertical', podcast: 'Consert Cast', video: '/images/consert-cast-corte.mp4', poster: '/images/consert-cast-corte-poster.jpg' },
+  { title: 'Entre Mães no Espectro — Corte 03', type: 'Corte vertical', podcast: 'Entre Mães', video: '/images/entre-maes-corte.mp4', poster: '/images/entre-maes-corte-poster.jpg' },
+  { title: 'Sai do Raso — Corte 01', type: 'Corte vertical', podcast: 'Sai do Raso', video: '/images/sai-do-raso-corte.mp4', poster: '/images/sai-do-raso-corte-poster.jpg' },
+  { title: 'CeC Vida e Negócios — Corte 01', type: 'Corte vertical', podcast: 'CeC', video: '/images/cec-vida-e-negocios-corte.mp4', poster: '/images/cec-vida-e-negocios-corte-poster.jpg' },
 ];
+
+const cutFilters = ['Todos', 'Consert Cast', 'Entre Mães', 'Sai do Raso', 'CeC', 'Outros'];
 
 export default function Podcast() {
   const whatsappPhone = '5517996240418';
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [playingCut, setPlayingCut] = useState<number | null>(null);
+  const [selectedCutFilter, setSelectedCutFilter] = useState('Todos');
+
+  const filteredCuts = selectedCutFilter === 'Todos'
+    ? cutExamples
+    : cutExamples.filter((cut) => cut.podcast === selectedCutFilter);
 
   const handleCutPlay = (index: number) => {
     videoRefs.current.forEach((video, videoIndex) => {
@@ -200,11 +207,31 @@ export default function Podcast() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2">
+              <div className="mb-8 md:mb-0 md:w-1/2">
                 <h2 className="text-3xl md:text-4xl font-display text-[#0F3A7D] mb-6">O Poder dos Cortes</h2>
                 <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                   Um episódio de 1 hora pode gerar até 10 vídeos curtos de alto impacto. Nós extraímos os melhores momentos para alimentar suas redes sociais durante toda a semana.
                 </p>
+                <div className="mb-7 flex flex-wrap gap-2" aria-label="Filtrar cortes por podcast">
+                  {cutFilters.map((filter) => {
+                    const isActive = selectedCutFilter === filter;
+                    return (
+                      <button
+                        key={filter}
+                        type="button"
+                        onClick={() => {
+                          videoRefs.current.forEach((video) => video?.pause());
+                          setPlayingCut(null);
+                          setSelectedCutFilter(filter);
+                        }}
+                        className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${isActive ? 'border-[#0F3A7D] bg-[#0F3A7D] text-white' : 'border-[#0F3A7D]/15 bg-white text-[#0F3A7D] hover:border-[#d4b67b] hover:bg-[#d4b67b]/10'}`}
+                        aria-pressed={isActive}
+                      >
+                        {filter}
+                      </button>
+                    );
+                  })}
+                </div>
                 <ul className="space-y-4">
                   {[
                     "Aumento de alcance orgânico",
@@ -220,7 +247,7 @@ export default function Podcast() {
                 </ul>
               </div>
               <div className="grid w-full grid-cols-2 gap-4 md:w-1/2">
-                {cutExamples.map((cut, index) => (
+                {filteredCuts.map((cut, index) => (
                   <article key={cut.video} className={`group relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 1 ? 'mt-8' : ''}`}>
                     <video
                       ref={(element) => { videoRefs.current[index] = element; }}
