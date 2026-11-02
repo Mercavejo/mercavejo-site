@@ -20,7 +20,6 @@ export default function Header() {
     { label: 'Serviços', href: '/#services' },
     { label: 'Portfólio', href: '/#portfolio' },
     { label: 'Podcast', href: '/podcast' },
-    { label: 'Pacotes', href: '/#packages' },
   ];
 
   const handleNavClick = (href: string) => {
