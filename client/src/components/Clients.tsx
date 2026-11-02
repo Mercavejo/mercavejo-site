@@ -15,7 +15,7 @@ export default function Clients() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="relative overflow-hidden border-y border-white/5 bg-[#0a192f] py-14">
+    <section className="relative overflow-hidden border-y border-white/5 bg-[#20447D] py-14">
       <style>{`
         @keyframes mercavejo-marquee {
           from { transform: translateX(0); }

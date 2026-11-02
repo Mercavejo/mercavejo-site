@@ -11,8 +11,17 @@ const stats = [
 
 export default function Results() {
   return (
-    <section id="results" className="relative overflow-hidden bg-[#0a192f] py-20 text-white sm:py-24">
-      <Aurora colors={['#20447D', '#d4b67b']} intensity={0.4} speed={0.8} />
+    <section id="results" className="relative overflow-hidden bg-[#20447D] py-20 text-white sm:py-24">
+      <Aurora colors={['#20447D', '#d4b67b']} intensity={0.45} speed={0.8} />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

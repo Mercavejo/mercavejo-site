@@ -69,7 +69,7 @@ export default function Studio() {
   return (
     <section
       id="studio"
-      className="relative py-20 sm:py-32 bg-[#0F3A7D] overflow-hidden"
+      className="relative py-20 sm:py-32 bg-[#20447D] overflow-hidden"
     >
       {/* Fundo decorativo */}
       <div className="pointer-events-none absolute inset-0">
@@ -111,7 +111,7 @@ export default function Studio() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F3A7D]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#20447D]/60 via-transparent to-transparent" />
               </div>
             </div>
           </div>

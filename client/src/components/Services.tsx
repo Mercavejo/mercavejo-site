@@ -14,6 +14,7 @@ import {
   Minus,
   ArrowRight,
 } from 'lucide-react';
+import Aurora from '@/components/effects/Aurora';
 
 const services = [
   {
@@ -85,12 +86,17 @@ export default function Services() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <section id="services" className="relative overflow-hidden bg-[#0F3A7D] py-20 sm:py-28">
-      {/* Fundo decorativo sutil */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute right-[-10%] top-[-15%] h-[42%] w-[42%] rounded-full bg-blue-500/10 blur-[120px]" />
-        <div className="absolute bottom-[-15%] left-[-10%] h-[42%] w-[42%] rounded-full bg-[#d4b67b]/10 blur-[120px]" />
-      </div>
+    <section id="services" className="relative overflow-hidden bg-[#20447D] py-20 sm:py-28">
+      <Aurora colors={['#20447D', '#d4b67b']} intensity={0.5} speed={0.9} />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -98,7 +104,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl"
+          className="mx-auto max-w-2xl text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-[#d4b67b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#d4b67b]" />
@@ -110,7 +116,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="mt-14 max-w-4xl">
+        <div className="mx-auto mt-14 max-w-4xl">
           {services.map((service, index) => {
             const Icon = service.icon;
             const open = expandedId === service.id;
