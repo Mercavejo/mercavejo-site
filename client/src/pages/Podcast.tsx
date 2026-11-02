@@ -43,11 +43,11 @@ const podcastDirectory = [
   { name: 'Antes da Consulta', image: '/images/podcasts/antes-da-consulta.png', href: 'https://www.instagram.com/podcastantesdaconsulta/' },
   { name: 'Café com Zakia', image: '/images/podcasts/cafe-com-zakia.jpg', href: 'https://www.instagram.com/cafecomzakia/' },
   { name: 'Sai do Raso', image: '/images/podcasts/sai-do-raso.png', href: 'https://www.instagram.com/lamanna_psicologa/' },
-  { name: 'Gente Amiga', image: '/images/podcasts/gente-amiga.png', href: 'https://www.instagram.com/podcastgenteamiga/' },
+  { name: 'Gente Amiga', image: '/images/podcasts/kung-fu-cast.jpg', href: 'https://www.instagram.com/podcastgenteamiga/' },
   { name: 'Entre Mães no Espectro', image: '/images/podcasts/entre-maes-no-espectro.jpg', href: 'https://www.instagram.com/entremaesnoespectro/' },
   { name: 'Consert Cast', image: '/images/podcasts/consert-cast.png', href: 'https://www.instagram.com/consertcast/' },
   { name: 'SeAmar Podcast', image: '/images/podcasts/seamar.png', href: 'https://www.instagram.com/seamarpodcast/' },
-  { name: 'Kung-Fu Cast', image: '/images/podcasts/kung-fu-cast.jpg', href: 'https://www.instagram.com/tigresdeshaolin/' },
+  { name: 'Kung-Fu Cast', image: '/images/podcasts/gente-amiga.png', href: 'https://www.instagram.com/tigresdeshaolin/' },
   { name: 'CeC Vida e Negócios', image: '/images/podcasts/cec-vida-e-negocio.png', href: 'https://www.instagram.com/cecvidaenegociopodcast/' },
 ];
 
